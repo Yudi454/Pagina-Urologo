@@ -9,6 +9,7 @@ const links = [
   { name: "Especialidades y tratamientos", href: "#especialidades" },
   { name: "Obras sociales", href: "#obras" },
   { name: "Testimonios", href: "#testimonios" },
+  { name: "Consultorios", href: "#consultorios" },
   { name: "Contacto", href: "#contacto" },
 ];
 
