@@ -59,7 +59,7 @@ export default function Footer() {
   ];
 
   return (
-    <div className=" bg-gray-300 rounded-md shadow-md px-10 py-8">
+    <footer className=" bg-gray-300 rounded-md shadow-md px-10 py-8">
       <div className="grid grid-cols-3 items-start">
         {/* Logo */}
         <div className="flex items-center pt-14">
@@ -99,6 +99,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
