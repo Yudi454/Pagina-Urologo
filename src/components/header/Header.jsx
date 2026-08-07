@@ -33,9 +33,9 @@ export const Header = () => {
 
           {/* Desktop */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-10">
-            {links.map((link) => (
+            {links.map((link,i) => (
               <a
-                key={link.name}
+                key={i}
                 href={link.href}
                 className="whitespace-nowrap text-sm xl:text-base 2xl:text-lg text-gray-800 transition-colors hover:text-[#0C71C3] font-bold"
               >
@@ -69,9 +69,9 @@ export const Header = () => {
           }`}
         >
           <nav className="flex flex-col bg-white">
-            {links.map((link) => (
+            {links.map((link,i) => (
               <a
-                key={link.name}
+                key={i}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="border-b px-6 py-4 text-lg hover:bg-gray-50"

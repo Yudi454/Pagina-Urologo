@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@/styles/text/text.css";
 
-export default function Footer() {
+export const Footer = () => {
   const servicios = [
     { service: "Litiasis Urinaria", link: "#Litiasis" },
     { service: "Control Prostático", link: "#Protático" },
@@ -20,7 +20,7 @@ export default function Footer() {
       icon: (
         <FontAwesomeIcon
           icon={faInstagram}
-          className="size-25"
+          className="size-10! md:size-15!"
           style={{ color: "rgb(12, 113, 195)" }}
         />
       ),
@@ -30,7 +30,7 @@ export default function Footer() {
       icon: (
         <FontAwesomeIcon
           icon={faFacebook}
-          className="size-25"
+          className="size-10! md:size-15!"
           style={{ color: "rgb(12, 113, 195)" }}
         />
       ),
@@ -40,7 +40,7 @@ export default function Footer() {
       icon: (
         <FontAwesomeIcon
           icon={faLinkedin}
-          className="size-25"
+          className="size-10! md:size-15!"
           style={{ color: "rgb(12, 113, 195)" }}
         />
       ),
@@ -50,7 +50,7 @@ export default function Footer() {
       icon: (
         <FontAwesomeIcon
           icon={faWhatsapp}
-          className="size-25"
+          className="size-10! md:size-15!"
           style={{ color: "rgb(12, 113, 195)" }}
         />
       ),
@@ -60,19 +60,25 @@ export default function Footer() {
 
   return (
     <footer className=" bg-gray-300 rounded-md shadow-md px-10 py-8">
-      <div className="grid grid-cols-3 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-3 items-start">
         {/* Logo */}
-        <div className="flex items-center pt-14">
+        <div className="flex items-center md:pt-14 mb-4 md:mb-0">
           <img src="/Logo.png" alt="Dr Franco Fagetti" className="w-full" />
         </div>
 
         {/* Servicios */}
         <div className="text-center">
-          <h2 className="text-6xl font-semibold text-black mb-14">Servicios</h2>
+          <h2 className="text-2xl md:text-5xl font-semibold text-black mb-4 md:mb-14">
+            SERVICIOS
+          </h2>
 
-          <div className="space-y-12">
+          <div className="space-y-5 md:space-y-12">
             {servicios.map((item, i) => (
-              <a key={i} className="block text-3xl font-bold text1" href={item.link}>
+              <a
+                key={i}
+                className="block md:text-3xl font-bold text1"
+                href={item.link}
+              >
                 {item.service}
               </a>
             ))}
@@ -81,17 +87,19 @@ export default function Footer() {
 
         {/* Contacto */}
         <div className="text-center">
-          <h2 className="text-6xl font-semibold text-black mb-10">Contacto</h2>
+          <h2 className="text-2xl md:text-5xl font-semibold text-black mt-4 md:mt-0 mb-4 md:mb-14">
+            CONTACTOS
+          </h2>
 
           <div className="space-y-5 flex flex-col items-center">
-            {contactos.map((item) => (
+            {contactos.map((item,i) => (
               <div
-                key={item.text}
+                key={i}
                 className="flex items-center gap-6 justify-start ml-10"
               >
-                {item.icon}
+                <div className="w-10 flex justify-center">{item.icon}</div>
 
-                <span className="text-3xl font-semibold text1">
+                <span className="md:text-3xl font-semibold text1">
                   {item.text}
                 </span>
               </div>
@@ -101,4 +109,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
