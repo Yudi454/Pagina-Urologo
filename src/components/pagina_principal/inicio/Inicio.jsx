@@ -2,12 +2,14 @@
 import React from "react";
 import { Hero } from "./Hero";
 import { Informacion } from "./Informacion";
+import { PorqueElegirme } from "./PorqueElegirme";
 
 export const Inicio = () => {
   return (
     <>
       <Hero />
       <Informacion />
+      <PorqueElegirme />
     </>
   );
 };

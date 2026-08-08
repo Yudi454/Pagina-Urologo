@@ -29,7 +29,7 @@ export const Informacion = () => {
   return (
     <>
       <section>
-        <div className="mx-auto flex max-w-[1700px] flex-col gap-12 px-6 py-12 md:flex-row md:items-start lg:px-16">
+        <div className="mx-auto flex max-w-[1700px] flex-col gap-12 px-6 mt-10 md:flex-row md:items-start lg:px-16">
           {/* SOBRE EL DR. FRANCO FAGETTI */}
           <div className="flex w-full flex-col text-center md:w-1/2">
             <h2 className="text-4xl font-bold text-[#087bd1] xl:text-5xl">
