@@ -3,7 +3,7 @@
 import { faBarcode, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { name: "Especialidades y tratamientos", href: "#especialidades" },
@@ -16,9 +16,29 @@ const links = [
 export const Header = () => {
   const [open, setOpen] = useState(false);
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
+      <header 
+        className={`sticky top-0 z-50 w-full transition-colors duration-500 ${
+        scrolled
+          ? "bg-white/50"
+          : "bg-white"
+      }`}
+>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           {/* Logo */}
           <div className="flex items-center gap-4 shrink-0">
@@ -34,7 +54,7 @@ export const Header = () => {
 
           {/* Desktop */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-10">
-            {links.map((link,i) => (
+            {links.map((link, i) => (
               <a
                 key={i}
                 href={link.href}
@@ -70,7 +90,7 @@ export const Header = () => {
           }`}
         >
           <nav className="flex flex-col bg-white">
-            {links.map((link,i) => (
+            {links.map((link, i) => (
               <a
                 key={i}
                 href={link.href}
