@@ -24,7 +24,7 @@ export const Servicios = () => {
     },
   ];
   return (
-    <section className="px-4 py-16 md:px-8 lg:px-12">
+    <section className="px-4  md:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
         {/* Título */}
         <h2 className="mb-12 text-center text-4xl font-bold text-[#0875c9] md:text-5xl">

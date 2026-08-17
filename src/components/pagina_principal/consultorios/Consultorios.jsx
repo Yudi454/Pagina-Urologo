@@ -48,7 +48,7 @@ export const Consultorios = () => {
   const [activo, setActivo] = useState(consultorios[0]);
 
   return (
-    <section className="w-full py-16 px-4">
+    <section className="w-full py-5 px-4">
       <div className="mx-auto max-w-7xl">
         {/* Título */}
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-500 mb-10">

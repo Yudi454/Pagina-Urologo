@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion } from "framer-motion";
-import { testimonios } from "./testimonios.js";
+import { testimonios } from "./testimonios2.js";
 
 export const Testimonios = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({

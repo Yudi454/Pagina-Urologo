@@ -11,11 +11,11 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Consultorios />
-      <Testimonios />
-      <ObrasSociales />
-      <ServiciosTratamientos />
       <PaginaPrincipal />
+      <ServiciosTratamientos />
+      <ObrasSociales />
+      <Testimonios />
+      <Consultorios />
       <Footer />
     </>
   );

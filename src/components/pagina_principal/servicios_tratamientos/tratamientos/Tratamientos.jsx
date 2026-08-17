@@ -2,7 +2,7 @@
 
 import { createElement, useState } from "react";
 import { InfoModal } from "./InfoModal";
-import { tratamientos } from "./tratamientos.js";
+import { tratamientos } from "./tratamientos2.js";
 import { AllModal } from "./AllModal.jsx";
 import "@/styles/text/text.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,7 +29,7 @@ export const Tratamientos = () => {
   const [atras, setAtras] = useState(false);
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className=" py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Título */}
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-400 mb-12 tracking-wide">
