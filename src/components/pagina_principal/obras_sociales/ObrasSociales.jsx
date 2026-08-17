@@ -37,15 +37,15 @@ export const ObrasSociales = () => {
   }, [emblaApi]);
 
   return (
-    <section className="w-full py-5 px-4">
+    <section className="w-full py-5 px-4 scroll-mt-30" id="obras" >
       <div className="mx-auto max-w-7xl">
         {/* Título */}
         <div className="mb-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0C71C3]">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#087bd1]">
             Obras sociales
           </h2>
 
-          <p className="mt-3 text-[#0C71C3]">
+          <p className="mt-3 text-[#087bd1]">
             Trabajamos con diferentes obras sociales y entidades de salud.
           </p>
         </div>
@@ -79,12 +79,12 @@ export const ObrasSociales = () => {
 
                   {/* Contenido */}
                   <div className="p-5">
-                    <h3 className="text-xl font-bold text-[#0C71C3]">
+                    <h3 className="text-xl font-bold text-[#087bd1]">
                       {obra.nombre}
                     </h3>
 
                     {obra.subtitulo && (
-                      <p className="mt-1 text-sm font-medium text-blue-600">
+                      <p className="mt-1 text-sm font-medium text-[#087bd1]">
                         {obra.subtitulo}
                       </p>
                     )}

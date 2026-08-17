@@ -48,7 +48,7 @@ export const Consultorios = () => {
   const [activo, setActivo] = useState(consultorios[0]);
 
   return (
-    <section className="w-full py-5 px-4">
+    <section className="w-full py-5 px-4 scroll-mt-30" id="consultorios">
       <div className="mx-auto max-w-7xl">
         {/* Título */}
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-500 mb-10">
@@ -121,7 +121,7 @@ export const Consultorios = () => {
         </div>
 
         {/* Dirección actual (opcional) */}
-        <p className="mt-4 text-center text-sm">
+        <p className="mt-4 text-center text-sm text-[#087bd1]">
           Mostrando ubicación de:{" "}
           <span className="font-semibold">{activo.nombre}</span>
         </p>

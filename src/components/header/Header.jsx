@@ -2,6 +2,7 @@
 
 import { faBarcode, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { animate } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -30,15 +31,32 @@ export const Header = () => {
     };
   }, []);
 
+  const handleScroll = (e, href) => {
+    e.preventDefault();
+
+    const element = document.querySelector(href);
+
+    if (!element) return;
+
+    const target = element.getBoundingClientRect().top + window.scrollY - 120;
+
+    animate(window.scrollY, target, {
+      duration: 0.8,
+      ease: "easeInOut",
+      onUpdate: (value) => {
+        window.scrollTo(0, value);
+      },
+    });
+
+    setOpen(false);
+  };
   return (
     <>
-      <header 
+      <header
         className={`sticky top-0 z-50 w-full transition-colors duration-500 ${
-        scrolled
-          ? "bg-white/50"
-          : "bg-white"
-      }`}
->
+          scrolled ? "bg-white/50" : "bg-white"
+        }`}
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           {/* Logo */}
           <div className="flex items-center gap-4 shrink-0">
@@ -58,6 +76,7 @@ export const Header = () => {
               <a
                 key={i}
                 href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
                 className="whitespace-nowrap text-sm xl:text-base 2xl:text-lg text-gray-800 transition-colors hover:text-[#0C71C3] font-bold"
               >
                 {link.name}
