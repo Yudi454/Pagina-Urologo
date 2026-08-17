@@ -5,7 +5,9 @@ import { Testimonios } from "@/components/pagina_principal/testimonios/Testimoni
 import { ObrasSociales } from "@/components/pagina_principal/obras_sociales/ObrasSociales";
 import { ServiciosTratamientos } from "@/components/pagina_principal/servicios_tratamientos/ServiciosTratamientos";
 import { PaginaPrincipal } from "@/components/pagina_principal/PaginaPrincipal";
-import "./globals.css"
+import "./globals.css";
+import { BotonVolver } from "@/components/boton_volver/BotonVolver";
+import { BotonWhatsapp } from "@/components/boton_whatsapp/BotonWhatsapp";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
       <ObrasSociales />
       <Testimonios />
       <Consultorios />
+      <BotonVolver />
+      <BotonWhatsapp />
       <Footer />
     </>
   );
