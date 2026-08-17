@@ -8,6 +8,7 @@ import { PaginaPrincipal } from "@/components/pagina_principal/PaginaPrincipal";
 import "./globals.css";
 import { BotonVolver } from "@/components/boton_volver/BotonVolver";
 import { BotonWhatsapp } from "@/components/boton_whatsapp/BotonWhatsapp";
+import { Contacto } from "@/components/pagina_principal/contacto/Contacto";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <ObrasSociales />
       <Testimonios />
       <Consultorios />
+      <Contacto />
       <BotonVolver />
       <BotonWhatsapp />
       <Footer />
