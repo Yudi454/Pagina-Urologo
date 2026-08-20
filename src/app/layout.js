@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://TU-DOMINIO.com"),
+  metadataBase: new URL("https://drfrancofagetti.netlify.app/"),
 
   title: "Dr. Franco Fagetti | Urólogo en Tucumán",
 
