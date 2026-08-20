@@ -37,7 +37,8 @@ export const Header = () => {
     const element = document.querySelector(href);
 
     if (!element) return;
-    const offset = isMobile ? 135 : 120; // ← más alto en mobile
+    const isMobile = window.innerWidth < 1024;
+    const offset = isMobile ? 150 : 120; // ← más alto en mobile
 
     const target = element.getBoundingClientRect().top + window.scrollY - offset;
 
