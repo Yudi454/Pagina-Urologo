@@ -36,7 +36,7 @@ export const Contacto = () => {
             aria-label="Instagram"
             className="flex p-4 items-center justify-center rounded-md bg-[#0C71C3] text-white transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#095b9e]"
           >
-            <FontAwesomeIcon size="4x" icon={red.red} className="text-xl" />
+            <FontAwesomeIcon icon={red.red} className="text-3xl md:text-7xl" />
           </a>
         ))}
       </div>
