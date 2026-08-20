@@ -4,7 +4,7 @@ import { Tratamientos } from "./tratamientos/Tratamientos";
 
 export const ServiciosTratamientos = () => {
   return (
-    <section id="especialidades" className="md:scroll-mt-30">
+    <section id="especialidades" className="scroll-mt-50 md:scroll-mt-30">
       <Servicios />
       <Tratamientos />
     </section>
