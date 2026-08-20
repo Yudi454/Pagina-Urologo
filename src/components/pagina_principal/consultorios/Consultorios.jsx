@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, animate } from "framer-motion";
 
 export const Consultorios = () => {
   const consultorios = [
@@ -47,8 +47,30 @@ export const Consultorios = () => {
 
   const [activo, setActivo] = useState(consultorios[0]);
 
+  const scrollToMapa = () => {
+    const element = document.querySelector("#mapa");
+    if (!element) return;
+
+    const isMobile = window.innerWidth < 1024;
+    const offset = isMobile ? 150 : 120;
+
+    const target =
+      element.getBoundingClientRect().top + window.scrollY - offset;
+
+    animate(window.scrollY, target, {
+      duration: 0.8,
+      ease: "easeInOut",
+      onUpdate: (value) => {
+        window.scrollTo(0, value);
+      },
+    });
+  };
+
   return (
-    <section className="w-full py-5 px-4 scroll-mt-100 md:scroll-mt-30" id="consultorios">
+    <section
+      className="w-full py-5 px-4 scroll-mt-100 md:scroll-mt-30"
+      id="consultorios"
+    >
       <div className="mx-auto max-w-7xl">
         {/* Título */}
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#087bd1] mb-10">
@@ -64,7 +86,9 @@ export const Consultorios = () => {
               className={`relative rounded-xl overflow-hidden before:absolute before:inset-0 before:bg-blue-600/60`}
             >
               <motion.button
-                onClick={() => setActivo(item)}
+                onClick={() => {
+                  setActivo(item), requestAnimationFrame(scrollToMapa);
+                }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={`relative z-10 h-100 w-full text-left rounded-xl p-6 md:p-8 transition-all duration-300 border-2 vittalia2.jpg
@@ -95,7 +119,10 @@ export const Consultorios = () => {
         </div>
 
         {/* Mapa */}
-        <div className="rounded-xl overflow-hidden border-2 border-blue-600 shadow-xl bg-white">
+        <div
+          id="mapa"
+          className="rounded-xl overflow-hidden border-2 border-blue-600 shadow-xl bg-white"
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={activo.id}
