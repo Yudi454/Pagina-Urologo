@@ -40,7 +40,8 @@ export const Header = () => {
     const isMobile = window.innerWidth < 1024;
     const offset = isMobile ? 150 : 120; // ← más alto en mobile
 
-    const target = element.getBoundingClientRect().top + window.scrollY - offset;
+    const target =
+      element.getBoundingClientRect().top + window.scrollY - offset;
 
     animate(window.scrollY, target, {
       duration: 0.8,
@@ -105,20 +106,46 @@ export const Header = () => {
         </div>
 
         {/* Menú móvil */}
+        {/* Menú móvil */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ${
-            open ? "max-h-96 border-t" : "max-h-0"
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            open ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <nav className="flex flex-col bg-white">
+          <nav className="flex flex-col bg-white border-t-2 border-[#0C71C3] shadow-lg">
             {links.map((link, i) => (
               <a
                 key={i}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="border-b px-6 py-4 text-lg hover:bg-gray-50"
+                className="group relative flex items-center px-6 py-4 text-lg font-medium text-gray-800
+                   transition-all duration-300
+                   hover:bg-[#0C71C3]/5
+                   hover:text-[#0C71C3]
+                   active:bg-[#0C71C3]/10
+                   border-b border-[#0C71C3]/20 last:border-b-0"
               >
+                {/* Barrita lateral */}
+                <span
+                  className="absolute left-0 top-0 h-full w-1 bg-[#0C71C3] 
+                         scale-y-0 group-hover:scale-y-100 origin-top
+                         transition-transform duration-300"
+                ></span>
+
+                {/* Número */}
+                <span className="mr-4 text-sm font-bold text-[#0C71C3]/60 w-6">
+                  0{i + 1}
+                </span>
+
                 {link.name}
+
+                {/* Flecha */}
+                <span
+                  className="ml-auto text-[#0C71C3] opacity-0 group-hover:opacity-100 
+                         transition-opacity duration-300 transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
               </a>
             ))}
           </nav>

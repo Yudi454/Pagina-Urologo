@@ -57,7 +57,7 @@ export const Testimonios = () => {
   }, [emblaApi]);
 
   return (
-    <section className="w-full py-16 px-4 bg-white scroll-mt-30" id="testimonios">
+    <section className="w-full py-16 px-4 bg-white scroll-mt-100 md:scroll-mt-30" id="testimonios">
       <div className="mx-auto max-w-7xl">
         {/* Título */}
         <div className="mb-12 text-center">

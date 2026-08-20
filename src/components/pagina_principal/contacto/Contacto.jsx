@@ -21,7 +21,7 @@ export const Contacto = () => {
     },
   ];
   return (
-    <div className="flex flex-col items-center gap-4 mb-10">
+    <div id="contacto" className="flex flex-col items-center gap-4 mb-10 scroll-mt-100 md:scroll-mt-30">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-[#087bd1] mb-5 mt-5">
         Seguinos en nuestras redes
       </h2>

@@ -37,7 +37,7 @@ export const ObrasSociales = () => {
   }, [emblaApi]);
 
   return (
-    <section className="w-full py-5 px-4 scroll-mt-30" id="obras" >
+    <section className="w-full py-5 px-4 scroll-mt-100 md:scroll-mt-30" id="obras" >
       <div className="mx-auto max-w-7xl">
         {/* Título */}
         <div className="mb-10 text-center">
