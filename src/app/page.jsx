@@ -15,11 +15,7 @@ export default function Home() {
     <>
       <Header />
       <PaginaPrincipal />
-      <ServiciosTratamientos />
-      <ObrasSociales />
-      <Testimonios />
-      <Consultorios />
-      <Contacto />
+
       <BotonVolver />
       <BotonWhatsapp />
       <Footer />
