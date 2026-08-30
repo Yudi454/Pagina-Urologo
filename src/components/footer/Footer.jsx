@@ -106,7 +106,7 @@ export const Footer = () => {
             {contactos.map((item, i) => (
               <div
                 key={i}
-                className="flex items-center gap-6 justify-start ml-10"
+                className="flex items-center gap-6 justify-start md:ml-10"
               >
                 <div className="w-10 flex justify-center">{item.icon}</div>
 

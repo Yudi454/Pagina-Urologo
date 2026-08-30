@@ -54,7 +54,7 @@ export const Informacion = () => {
         Y BIENESTAR
       </h2>
 
-      <p className="mt-10 text-lg text-center font-medium leading-relaxed md:text-2xl lg:text-[28px]">
+      <p className="mt-10 text-2xl text-center font-bold drop-shadow-lg  leading-relaxed md:text-2xl lg:text-[28px]">
         Tu salud y bienestar son nuestra prioridad. Recibí atención urológica
         especializada, con un diagnóstico preciso y tratamientos personalizados
         para cuidar tu salud y mejorar tu calidad de vida. Conocé las
@@ -63,7 +63,7 @@ export const Informacion = () => {
 
       <a
         href="#contacto"
-        className="mt-14 inline-flex w-[50%] justify-center border-2 border-white px-10 py-4 text-xl font-medium uppercase transition-all duration-300 hover:scale-105 hover:border-[#536F7A]/25 hover:bg-[#536F7A]/25 md:px-12 md:py-5 md:text-2xl"
+        className="mt-14 inline-flex md:w-[50%] justify-center border-2 border-white px-10 py-4 text-xl font-medium uppercase transition-all duration-300 hover:scale-105 hover:border-[#536F7A]/25 hover:bg-[#536F7A]/25 md:px-12 md:py-5 md:text-2xl"
       >
         SOLICITAR CONSULTA
       </a>

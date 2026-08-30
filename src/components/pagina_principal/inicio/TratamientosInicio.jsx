@@ -24,11 +24,11 @@ export const TratamientosInicio = () => {
     <section id="tratamientos">
       {/* Titulo */}
       <h1 className="text-center text-4xl text-[#508EAD] font-bold mt-30 mb-10">TRATAMIENTOS</h1>
-      <div className="mx-auto grid w-[60%] grid-cols-2 gap-5">
+      <div className="mx-auto grid w-[90%] md:w-[60%] grid-cols-2 gap-5">
         {tratamientos.map((t, i) => (
           <div
             key={i}
-            className="flex p-10 flex-col items-center justify-center bg-[#323E4A] hover:scale-105 duration-300"
+            className="flex p-3 md:p-10 flex-col items-center justify-center bg-[#323E4A] hover:scale-105 duration-300"
           >
             <Image
               src={t.foto}
@@ -36,10 +36,10 @@ export const TratamientosInicio = () => {
               width={500}
               height={500}
               priority
-              className="h-auto w-32 object-cover md:w-60"
+              className="h-auto w-30 object-cover md:w-60"
             />
 
-            <p className="font-bold text-white text-3xl">{t.nombre}</p>
+            <p className="text-center font-bold text-white text-xl md:text-3xl">{t.nombre}</p>
           </div>
         ))}
       </div>
