@@ -47,7 +47,6 @@ export const Informacion = () => {
           <video
             className="w-48 rounded-xl md:w-64 lg:w-72"
             autoPlay
-            muted
             loop
             playsInline
           >
