@@ -1,20 +1,32 @@
 "use client";
 
-import { faBarcode, faX } from "@fortawesome/free-solid-svg-icons";
+import { useStore } from "@/store/useStore";
+import { faBarcode, faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { animate } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const links = [
-  { name: "Especialidades y tratamientos", href: "#especialidades" },
-  { name: "Obras sociales", href: "#obras" },
-  { name: "Testimonios", href: "#testimonios" },
-  { name: "Consultorios", href: "#consultorios" },
-  { name: "Contacto", href: "#contacto" },
+  {
+    name: "TU SALUD UROLÓGICA",
+    href: "#informacion",
+    alturaPc: -80,
+    alturaMobile: 180,
+  },
+  { name: "CONOCEME", href: "#conoceme", alturaPc: -20, alturaMobile: 250 },
+  {
+    name: "TRATAMIENTOS",
+    href: "#tratamientos",
+    alturaPc: 0,
+    alturaMobile: 250,
+  },
+  { name: "GUÍA PARA PACIENTES", href: "#consultorios" },
 ];
 
 export const Header = () => {
+  const scrollbar = useStore((state) => state.scrollbar);
+
   const [open, setOpen] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
@@ -31,25 +43,19 @@ export const Header = () => {
     };
   }, []);
 
-  const handleScroll = (e, href) => {
+  const handleScroll = (e, href, alturaPc, alturaMobile) => {
     e.preventDefault();
 
     const element = document.querySelector(href);
 
     if (!element) return;
     const isMobile = window.innerWidth < 1024;
-    const offset = isMobile ? 150 : 120; // ← más alto en mobile
+    const offset = isMobile ? alturaMobile : alturaPc; // ← más alto en mobile
 
     const target =
-      element.getBoundingClientRect().top + window.scrollY - offset;
+      element.getBoundingClientRect().top + scrollbar.offset.y - offset;
 
-    animate(window.scrollY, target, {
-      duration: 0.8,
-      ease: "easeInOut",
-      onUpdate: (value) => {
-        window.scrollTo(0, value);
-      },
-    });
+    scrollbar.scrollTo(0, target, 800);
 
     setOpen(false);
   };
@@ -57,30 +63,20 @@ export const Header = () => {
     <>
       <header
         className={`sticky top-0 z-50 w-full transition-colors duration-500 ${
-          scrolled ? "bg-white/50" : "bg-white"
+          scrolled ? "bg-[#66B4DB]/50" : "bg-[#66B4DB]"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          {/* Logo */}
-          <div className="flex items-center gap-4 shrink-0">
-            <Image
-              src="/Logo.png" // public/logo.png
-              alt="Dr. Franco Fagetti"
-              width={500}
-              height={120}
-              className="w-60 md:w-100"
-              loading="eager"
-            />
-          </div>
-
+        <div className="mx-auto flex max-w-7xl h-30 items-center justify-center px-6 py-4">
           {/* Desktop */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-10">
             {links.map((link, i) => (
               <a
                 key={i}
                 href={link.href}
-                onClick={(e) => handleScroll(e, link.href)}
-                className="whitespace-nowrap text-sm xl:text-base 2xl:text-lg text-gray-800 transition-colors hover:text-[#0C71C3] font-bold"
+                onClick={(e) =>
+                  handleScroll(e, link.href, link.alturaPc, link.alturaMobile)
+                }
+                className="whitespace-nowrap text-sm  md:text-3xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
               >
                 {link.name}
               </a>
@@ -97,8 +93,8 @@ export const Header = () => {
               />
             ) : (
               <FontAwesomeIcon
-                icon={faBarcode}
-                size="xl"
+                icon={faBars}
+                size="2xl"
                 style={{ color: "rgb(12, 113, 195)" }}
               />
             )}
@@ -108,7 +104,7 @@ export const Header = () => {
         {/* Menú móvil */}
         {/* Menú móvil */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          className={`lg:hidden overflow-hidden transition-all duration-600 ease-in-out ${
             open ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
@@ -117,20 +113,13 @@ export const Header = () => {
               <a
                 key={i}
                 href={link.href}
-                onClick={() => setOpen(false)}
-                className="group relative flex items-center px-6 py-4 text-lg font-medium text-gray-800
-                   transition-all duration-300
-                   hover:bg-[#0C71C3]/5
-                   hover:text-[#0C71C3]
-                   active:bg-[#0C71C3]/10
-                   border-b border-[#0C71C3]/20 last:border-b-0"
+                onClick={(e) =>
+                  handleScroll(e, link.href, link.alturaPc, link.alturaMobile)
+                }
+                className="group relative flex items-center px-6 py-4 text-lg font-medium text-gray-800  transition-all duration-300 hover:bg-[#0C71C3]/5 hover:text-[#0C71C3] active:bg-[#0C71C3]/10 border-b border-[#0C71C3]/50 last:border-b-0"
               >
                 {/* Barrita lateral */}
-                <span
-                  className="absolute left-0 top-0 h-full w-1 bg-[#0C71C3] 
-                         scale-y-0 group-hover:scale-y-100 origin-top
-                         transition-transform duration-300"
-                ></span>
+                <span className="absolute left-0 top-0 h-full w-1 bg-[#0C71C3] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"></span>
 
                 {/* Número */}
                 <span className="mr-4 text-sm font-bold text-[#0C71C3]/60 w-6">
@@ -140,10 +129,7 @@ export const Header = () => {
                 {link.name}
 
                 {/* Flecha */}
-                <span
-                  className="ml-auto text-[#0C71C3] opacity-0 group-hover:opacity-100 
-                         transition-opacity duration-300 transform group-hover:translate-x-1"
-                >
+                <span className="ml-auto text-[#0C71C3] opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:translate-x-1">
                   →
                 </span>
               </a>

@@ -9,6 +9,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 export const Informacion = () => {
+  const telefono = "3815763300";
+
+  const mensaje = encodeURIComponent(
+    "Hola Dr. Fagetti, quisiera realizar una consulta y obtener información sobre un turno."
+  );
+
   const perfiles = [
     {
       icon: faGraduationCap,
@@ -28,61 +34,47 @@ export const Informacion = () => {
   ];
   return (
     <>
-      <section>
-        <div className="mx-auto flex max-w-[1700px] flex-col gap-12 px-6 mt-10 md:flex-row md:items-start lg:px-16">
-          {/* SOBRE EL DR. FRANCO FAGETTI */}
-          <div className="flex w-full flex-col text-center md:w-1/2">
-            <h2 className="text-4xl font-bold text-[#087bd1] xl:text-5xl">
-              Sobre el Dr. Franco Fagetti
+      <section
+        id="informacion"
+        className="relative flex min-h-150 md:min-h-250 w-full items-center justify-center overflow-hidden bg-[url('/fondo2.jfif')] bg-cover bg-center"
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-[#536F7A]/50" />
+
+        {/* Contenido */}
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-6 py-20 text-white md:flex-row md:justify-center">
+          {/* Video */}
+          <video
+            className="w-48 rounded-xl md:w-64 lg:w-72"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="/video1.mp4" type="video/mp4" />
+          </video>
+
+          {/* Texto */}
+          <div className="max-w-3xl md:text-left flex flex-col items-center">
+            <h2 className="text-3xl text-center font-extrabold uppercase leading-tight tracking-wide md:text-4xl lg:text-5xl">
+              CUIDANDO TU SALUD
+              <br />Y BIENESTAR
             </h2>
 
-            <div className="mt-12 text-xl font-semibold leading-[1.65] text-[#087bd1] xl:text-2xl">
-              <p>
-                El Dr. Franco Fagetti es especialista en Urología con amplia
-                experiencia clínica en el diagnóstico y tratamiento de
-                enfermedades del tracto urinario y del sistema reproductor
-                masculino. Se distingue por su atención personalizada y por
-                mantener una constante actualización en las últimas técnicas y
-                avances de la especialidad.
-              </p>
+            <p className="mt-10 text-2xl text-center font-bold drop-shadow-lg  leading-relaxed md:text-2xl lg:text-[28px]">
+              Tu salud y bienestar son nuestra prioridad. Recibí atención
+              urológica especializada, con un diagnóstico preciso y tratamientos
+              personalizados para cuidar tu salud y mejorar tu calidad de vida.
+              Conocé las especialidades y tratamientos del Dr. Franco Fagetti.
+            </p>
 
-              <p className="mt-12">
-                Ha completado su formación en centros de referencia nacionales e
-                internacionales, lo que le permite ofrecer a sus pacientes un
-                abordaje integral y actualizado. Actualmente continúa
-                perfeccionando su práctica a través de capacitaciones y
-                participación activa en congresos científicos.
-              </p>
-            </div>
-          </div>
-
-          {/* PERFIL PROFESIONAL */}
-          <div className="flex w-full flex-col gap-6 md:w-1/2">
-            <h2 className="text-center text-4xl font-bold text-[#087bd1] xl:text-5xl">
-              Perfil Profesional
-            </h2>
-
-            {/* PERFILES */}
-            {perfiles.map((perfil, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-6 rounded-2xl border-4 border-[#087bd1] bg-white px-5 py-3 md:px-8 md:py-4 shadow-lg"
-              >
-                <FontAwesomeIcon
-                  icon={perfil.icon}
-                  className="size-10! md:size-15!"
-                  style={{ color: "rgb(12, 113, 195)" }}
-                />
-                <div>
-                  <h3 className="text-3xl font-semibold text-[#087bd1] xl:text-4xl">
-                    {perfil.nombre}
-                  </h3>
-                  <p className="mt-1 text-2xl text-gray-500 xl:text-3xl">
-                    {perfil.anio}
-                  </p>
-                </div>
-              </div>
-            ))}
+            <a
+              href={`https://wa.me/${telefono}?text=${mensaje}`}
+              target="_blank"
+              className="mt-14 inline-flex md:w-[50%] justify-center border-2 border-white px-10 py-4 text-xl font-medium uppercase transition-all duration-300 hover:scale-105 hover:border-[#536F7A]/25 hover:bg-[#536F7A]/25 md:px-12 md:py-5 md:text-2xl"
+            >
+              SOLICITAR CONSULTA
+            </a>
           </div>
         </div>
       </section>

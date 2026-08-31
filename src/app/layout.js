@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/hooks/SmoothScroll";
+import { BotonVolver } from "@/components/boton_volver/BotonVolver";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

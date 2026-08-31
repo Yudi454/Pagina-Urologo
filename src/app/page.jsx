@@ -9,20 +9,18 @@ import "./globals.css";
 import { BotonVolver } from "@/components/boton_volver/BotonVolver";
 import { BotonWhatsapp } from "@/components/boton_whatsapp/BotonWhatsapp";
 import { Contacto } from "@/components/pagina_principal/contacto/Contacto";
+import SmoothScroll from "@/hooks/SmoothScroll";
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <PaginaPrincipal />
-      <ServiciosTratamientos />
-      <ObrasSociales />
-      <Testimonios />
-      <Consultorios />
-      <Contacto />
-      <BotonVolver />
+      <SmoothScroll>
+        <Header />
+        <PaginaPrincipal />
+        <Footer />
+      </SmoothScroll>
       <BotonWhatsapp />
-      <Footer />
+      <BotonVolver />
     </>
   );
 }
