@@ -12,10 +12,15 @@ const links = [
     name: "TU SALUD UROLÓGICA",
     href: "#informacion",
     alturaPc: -80,
-    alturaMobile: -80,
+    alturaMobile: 180,
   },
-  { name: "CONOCEME", href: "#conoceme", alturaPc: 140 },
-  { name: "TRATAMIENTOS", href: "#tratamientos", alturaPc: 0 },
+  { name: "CONOCEME", href: "#conoceme", alturaPc: -20, alturaMobile: 250 },
+  {
+    name: "TRATAMIENTOS",
+    href: "#tratamientos",
+    alturaPc: 0,
+    alturaMobile: 250,
+  },
   { name: "GUÍA PARA PACIENTES", href: "#consultorios" },
 ];
 
@@ -68,7 +73,9 @@ export const Header = () => {
               <a
                 key={i}
                 href={link.href}
-                onClick={(e) => handleScroll(e, link.href, link.alturaPc, link.alturaMobile)}
+                onClick={(e) =>
+                  handleScroll(e, link.href, link.alturaPc, link.alturaMobile)
+                }
                 className="whitespace-nowrap text-sm  md:text-3xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
               >
                 {link.name}
@@ -106,7 +113,9 @@ export const Header = () => {
               <a
                 key={i}
                 href={link.href}
-                onClick={(e) => handleScroll(e, link.href, link.alturaPc, link.alturaMobile)}
+                onClick={(e) =>
+                  handleScroll(e, link.href, link.alturaPc, link.alturaMobile)
+                }
                 className="group relative flex items-center px-6 py-4 text-lg font-medium text-gray-800  transition-all duration-300 hover:bg-[#0C71C3]/5 hover:text-[#0C71C3] active:bg-[#0C71C3]/10 border-b border-[#0C71C3]/50 last:border-b-0"
               >
                 {/* Barrita lateral */}
