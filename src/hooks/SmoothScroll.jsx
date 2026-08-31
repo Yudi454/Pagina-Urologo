@@ -8,9 +8,11 @@ class CustomScrollPlugin extends Scrollbar.ScrollbarPlugin {
   static pluginName = "customScroll";
 
   transformDelta(delta) {
+    const isMobile = window.innerWidth < 1024;
+
     return {
       x: delta.x,
-      y: delta.y * 0.5,
+      y: delta.y * (!isMobile ? 0.4 : 1),
     };
   }
 }
