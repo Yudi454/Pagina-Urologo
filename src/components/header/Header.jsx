@@ -68,7 +68,7 @@ export const Header = () => {
       >
         <div className="mx-auto flex max-w-7xl h-30 items-center justify-center px-6 py-4">
           {/* Desktop */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-10">
+          <nav className="font-sans hidden lg:flex items-center gap-6 xl:gap-10">
             {links.map((link, i) => (
               <a
                 key={i}
@@ -76,7 +76,7 @@ export const Header = () => {
                 onClick={(e) =>
                   handleScroll(e, link.href, link.alturaPc, link.alturaMobile)
                 }
-                className="whitespace-nowrap text-sm  md:text-3xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
+                className=" whitespace-nowrap text-sm  md:text-3xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
               >
                 {link.name}
               </a>

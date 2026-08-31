@@ -17,7 +17,7 @@ export const Hero = () => {
           className="w-2xs h-auto md:w-xl md:mb-20 object-contain"
         />
 
-        <h2 className="mt-8  text-3xl font-extrabold uppercase leading-tight tracking-wide text-white drop-shadow-[4px_4px_0_#508ead] md:text-6xl">
+        <h2 className=" mt-8  text-3xl font-extrabold uppercase leading-tight tracking-wide text-white drop-shadow-[4px_4px_0_#508ead] md:text-6xl">
           AYUDÁNDOTE A RECUPERAR
           <br />
           TU BIENESTAR Y CONFIANZA
