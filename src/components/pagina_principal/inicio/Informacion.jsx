@@ -49,6 +49,7 @@ export const Informacion = () => {
             autoPlay
             loop
             playsInline
+            controls
             preload="metadata"
           >
             <source src="/video1.mp4" type="video/mp4" />

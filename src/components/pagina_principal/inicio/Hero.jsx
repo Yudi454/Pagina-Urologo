@@ -3,7 +3,7 @@ import React from "react";
 
 export const Hero = () => {
   return (
-    <section className="relative w-full flex justify-center items-center min-h-200 md:min-h-250 overflow-hidden bg-[url('/fondo1.jpg')] bg-cover bg-center before:absolute before:inset-0 before:bg-[#B3E5FC]/50 before:content-['']">
+    <section className="relative w-full flex justify-center items-center min-h-200 md:min-h-250 overflow-hidden bg-[url('/fondo1.jpg')] bg-cover bg-[position:76%_center] bg-cover md:bg-center before:absolute before:inset-0 before:bg-[#B3E5FC]/50 before:content-['']">
       {/* leve velo para que se lea el texto */}
 
       <div className="relative z-10 flex h-full min-h-105 md:min-h-140 lg:min-h-160 flex-col items-center justify-center px-4 text-center">
