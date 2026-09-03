@@ -26,6 +26,29 @@ const links = [
   { name: "GUÍA PARA PACIENTES", href: "/conoceme" },
 ];
 
+const linksPacientes = [
+  {
+    name: "INICIO",
+    href: "/",
+  },
+  {
+    name: "CONOCEME",
+    href: "/conoceme",
+  },
+  {
+    name: "TRATAMIENTOS",
+    href: "/tratamientos",
+  },
+  {
+    name: "OBRAS SOCIALES",
+    href: "/obras_sociales",
+  },
+  {
+    name: "CONSULTORIOS",
+    href: "/consultorios",
+  },
+];
+
 export const Header = () => {
   const scrollbar = useStore((state) => state.scrollbar);
 
@@ -35,8 +58,8 @@ export const Header = () => {
 
   const pathname = usePathname();
 
-  if (pathname === "/") {
-    console.log("inicio");
+  if (pathname != "/") {
+    console.log("no es inicio");
   }
 
   useEffect(() => {
@@ -78,23 +101,14 @@ export const Header = () => {
         <div className="mx-auto flex max-w-7xl h-30 items-center justify-center px-6 py-4">
           {/* Desktop */}
           <nav className="font-sans hidden lg:flex items-center gap-6 xl:gap-10">
-            {links.map((link, i) => (
-              <a
+            {(pathname === "/" ? links : linksPacientes).map((link, i) => (
+              <Link
                 key={i}
                 href={link.href}
-                // onClick={(e) => {
-                //   link.href != "/conoceme" &&
-                //     handleScroll(
-                //       e,
-                //       link.href,
-                //       link.alturaPc,
-                //       link.alturaMobile
-                //     );
-                // }}
                 className=" whitespace-nowrap text-sm  md:text-3xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
