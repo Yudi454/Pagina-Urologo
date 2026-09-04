@@ -41,7 +41,7 @@ export const ObrasSocialesMain = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {obras.map((obra, i) => (
             <div
-              key={obra.i}
+              key={i}
               className="group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-2xl hover:shadow-blue-100/50 hover:-translate-y-2 transition-all duration-300 cursor-pointer overflow-hidden"
             >
               {/* Efecto de brillo sutil */}
@@ -63,7 +63,7 @@ export const ObrasSocialesMain = () => {
                 <h3 className="text-xl font-bold uppercase text-[#508EAD] mb-1">
                   {obra.nombre}
                 </h3>
-                <p className="text-sm text-slate-500 mb-6">{obra.subtitulo}</p>
+                <p className="text-x font-semibold mb-6">{obra.subtitulo}</p>
               </div>
             </div>
           ))}
@@ -71,7 +71,7 @@ export const ObrasSocialesMain = () => {
 
         {/* CTA inferior */}
         <div className="mt-16 text-center">
-          <p className="text-slate-500 mb-6">
+          <p className="text-x mb-6">
             ¿No encontrás tu obra social? Consultanos, podemos ayudarte.
           </p>
           <button className="inline-flex h-16 min-w-80 items-center justify-center rounded-md border-2 border-[#3A8DBD] bg-[#E8E8E8] px-10 text-2xl font-bold uppercase text-[#3A8DBD] transition-all duration-300 hover:scale-105 hover:bg-white">
