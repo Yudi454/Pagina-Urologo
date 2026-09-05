@@ -108,7 +108,7 @@ export const ConsultoriosMain = () => {
                   }}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-12  items-center justify-center rounded-md border-2 border-[#3A8DBD] bg-[#E8E8E8] px-10 text-sm md:text-x font-bold uppercase text-[#3A8DBD] transition-all duration-300 hover:scale-105 hover:bg-white"
+                  className="inline-flex h-12  items-center justify-center rounded-md border-2 border-[#3A8DBD] bg-white px-10 text-sm md:text-x font-bold uppercase text-[#3A8DBD] transition-all duration-300 hover:scale-105 hover:bg-white"
                 >
                   Ver ubicación en mapa
                 </button>

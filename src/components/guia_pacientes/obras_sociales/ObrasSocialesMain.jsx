@@ -74,7 +74,7 @@ export const ObrasSocialesMain = () => {
           <p className="text-x mb-6">
             ¿No encontrás tu obra social? Consultanos, podemos ayudarte.
           </p>
-          <button className="inline-flex h-16 min-w-80 items-center justify-center rounded-md border-2 border-[#3A8DBD] bg-[#E8E8E8] px-10 text-2xl font-bold uppercase text-[#3A8DBD] transition-all duration-300 hover:scale-105 hover:bg-white">
+          <button className="inline-flex h-16 min-w-80 items-center justify-center rounded-md border-2 border-[#3A8DBD] bg-white px-10 text-2xl font-bold uppercase text-[#3A8DBD] transition-all duration-300 hover:scale-105 hover:bg-white">
             Consultar cobertura
           </button>
         </div>

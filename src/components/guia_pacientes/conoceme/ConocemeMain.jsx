@@ -59,7 +59,7 @@ export const ConocemeMain = () => {
           </div>
         </div>
 
-        <div className="shadow mt-24 rounded-md border-2 border-[#323E4A] bg-[#ECECEC] px-8 py-10 md:px-12">
+        <div className="shadow mt-24 rounded-md border-2 border-[#323E4A] bg-white px-8 py-10 md:px-12">
           {resenas.map((resena, index) => (
             <div key={index}>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -90,7 +90,7 @@ export const ConocemeMain = () => {
             href="https://www.google.com.ar/search?q=doctor+franco+fagetti&sca_esv=8b4659d1f6f28da8&sxsrf=APpeQnss4D2B_vBu9br5Br7cgjQ1YhH8jQ%3A1788464798840&source=hp&ei=ns6ZaubMMNTd1sQP35iy4AY&iflsig=ABILxe8AAAAAapncriXpdQqkx4-7-_xDymkDMWvF3nvM&oq=d&gs_lp=Egdnd3Mtd2l6IgFkKgIIADIEECMYJzIEECMYJzIKECMY8AUYyQIYJzIIEAAYgAQYsQMyCBAAGIAEGLEDMhEQLhiABBixAxiDARjHARjRAzIFEAAYgAQyBRAAGIAEMg4QABiABBiKBRiNBhixAzIIEAAYgAQYsQNIlQdQf1h_cAF4AJABAJgBVaABVaoBATG4AQHIAQD4AQGYAgKgAmOoAgrCAg0QIxjJAhjwBRjqAhgnwgIHECMY6gIYJ8ICDRAjGPAFGMkCGOoCGCfCAgoQIxjwBRjqAhgnwgIHEC4Y6gIYJ5gDCPEFyEBA7Lgr_i2SBwEyoAfMCbIHATG4B1rCBwMyLTLIBwuACAE&sclient=gws-wiz#lrd=0x94225d1695aa72fd:0xb7d746722847c553,1,,,,"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-16 min-w-80 items-center justify-center rounded-md border-2 border-[#3A8DBD] bg-[#E8E8E8] px-10 text-2xl font-bold uppercase text-[#3A8DBD] transition-all duration-300 hover:scale-105 hover:bg-white"
+            className="inline-flex h-16 min-w-80 items-center justify-center rounded-md border-2 border-[#3A8DBD] bg-white px-10 text-2xl font-bold uppercase text-[#3A8DBD] transition-all duration-300 hover:scale-105 hover:bg-white"
           >
             Ver Más Reseñas
           </a>
