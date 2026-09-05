@@ -13,7 +13,7 @@ export const BotonVolver = () => {
         onClick={() => {
           lenis?.scrollTo(0, { duration: 0.8, easing: (t) => t * (2 - t) });
         }}
-        className="fixed bottom-6 right-6 z-0 flex h-12 w-12 flex-col items-center justify-center rounded-full bg-[#0C71C3] text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#095b9e]"
+        className="fixed bottom-6 right-6 z-10 flex h-12 w-12 flex-col items-center justify-center rounded-full bg-[#0C71C3] text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#095b9e]"
         aria-label="Volver arriba"
       >
         <span className="text-lg leading-2">

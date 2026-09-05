@@ -137,13 +137,11 @@ export const Header = () => {
           }`}
         >
           <nav className="flex flex-col bg-white border-t-2 border-[#0C71C3] shadow-lg">
-            {links.map((link, i) => (
-              <a
+            {(pathname === "/" ? links : linksPacientes).map((link, i) => (
+              <Link
                 key={i}
                 href={link.href}
-                onClick={(e) =>
-                  handleScroll(e, link.href, link.alturaPc, link.alturaMobile)
-                }
+                onClick={() => setOpen(false)}
                 className="group relative flex items-center px-6 py-4 text-lg font-medium text-gray-800  transition-all duration-300 hover:bg-[#0C71C3]/5 hover:text-[#0C71C3] active:bg-[#0C71C3]/10 border-b border-[#0C71C3]/50 last:border-b-0"
               >
                 {/* Barrita lateral */}
@@ -160,7 +158,7 @@ export const Header = () => {
                 <span className="ml-auto text-[#0C71C3] opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:translate-x-1">
                   →
                 </span>
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
