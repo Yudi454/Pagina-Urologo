@@ -1,7 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/hooks/SmoothScroll";
+import { Header } from "@/components/header/Header";
+import { Footer } from "@/components/footer/Footer";
 import { BotonVolver } from "@/components/boton_volver/BotonVolver";
+import { BotonWhatsapp } from "@/components/boton_whatsapp/BotonWhatsapp";
+import UseLenis from "@/hooks/UseLenis";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,9 +56,18 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased `}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="relative min-h-full flex flex-col">
+
+        <UseLenis >
+          <Header />
+          {children}
+          <Footer />
+          <BotonVolver />
+          <BotonWhatsapp />
+        </UseLenis>
+      </body>
     </html>
   );
 }

@@ -5,6 +5,8 @@ import { faBarcode, faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { animate } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -21,7 +23,30 @@ const links = [
     alturaPc: 0,
     alturaMobile: 250,
   },
-  { name: "GUÍA PARA PACIENTES", href: "#consultorios" },
+  { name: "GUÍA PARA PACIENTES", href: "/conoceme" },
+];
+
+const linksPacientes = [
+  {
+    name: "INICIO",
+    href: "/",
+  },
+  {
+    name: "CONOCEME",
+    href: "/conoceme",
+  },
+  {
+    name: "TRATAMIENTOS",
+    href: "/tratamientos",
+  },
+  {
+    name: "OBRAS SOCIALES",
+    href: "/obras_sociales",
+  },
+  {
+    name: "CONSULTORIOS",
+    href: "/consultorios",
+  },
 ];
 
 export const Header = () => {
@@ -31,6 +56,12 @@ export const Header = () => {
 
   const [scrolled, setScrolled] = useState(false);
 
+  const pathname = usePathname();
+
+  if (pathname != "/") {
+    console.log("no es inicio");
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -39,7 +70,7 @@ export const Header = () => {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      // window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -47,39 +78,37 @@ export const Header = () => {
     e.preventDefault();
 
     const element = document.querySelector(href);
-
     if (!element) return;
+
     const isMobile = window.innerWidth < 1024;
-    const offset = isMobile ? alturaMobile : alturaPc; // ← más alto en mobile
+    const offset = isMobile ? alturaMobile : alturaPc;
 
     const target =
-      element.getBoundingClientRect().top + scrollbar.offset.y - offset;
+      element.getBoundingClientRect().top + window.scrollY - offset;
 
-    scrollbar.scrollTo(0, target, 800);
+    window.scrollTo({
+      top: target,
+      behavior: "smooth",
+    });
 
     setOpen(false);
   };
   return (
     <>
       <header
-        className={`sticky top-0 z-50 w-full transition-colors duration-500 ${
-          scrolled ? "bg-[#66B4DB]/50" : "bg-[#66B4DB]"
-        }`}
+        className={` top-0 z-50 w-full transition-colors duration-500 bg-[#66B4DB]  `}
       >
         <div className="mx-auto flex max-w-7xl h-30 items-center justify-center px-6 py-4">
           {/* Desktop */}
           <nav className="font-sans hidden lg:flex items-center gap-6 xl:gap-10">
-            {links.map((link, i) => (
-              <a
+            {(pathname === "/" ? links : linksPacientes).map((link, i) => (
+              <Link
                 key={i}
                 href={link.href}
-                onClick={(e) =>
-                  handleScroll(e, link.href, link.alturaPc, link.alturaMobile)
-                }
                 className=" whitespace-nowrap text-sm  md:text-3xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -102,20 +131,17 @@ export const Header = () => {
         </div>
 
         {/* Menú móvil */}
-        {/* Menú móvil */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-600 ease-in-out ${
             open ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <nav className="flex flex-col bg-white border-t-2 border-[#0C71C3] shadow-lg">
-            {links.map((link, i) => (
-              <a
+            {(pathname === "/" ? links : linksPacientes).map((link, i) => (
+              <Link
                 key={i}
                 href={link.href}
-                onClick={(e) =>
-                  handleScroll(e, link.href, link.alturaPc, link.alturaMobile)
-                }
+                onClick={() => setOpen(false)}
                 className="group relative flex items-center px-6 py-4 text-lg font-medium text-gray-800  transition-all duration-300 hover:bg-[#0C71C3]/5 hover:text-[#0C71C3] active:bg-[#0C71C3]/10 border-b border-[#0C71C3]/50 last:border-b-0"
               >
                 {/* Barrita lateral */}
@@ -132,7 +158,7 @@ export const Header = () => {
                 <span className="ml-auto text-[#0C71C3] opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:translate-x-1">
                   →
                 </span>
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
