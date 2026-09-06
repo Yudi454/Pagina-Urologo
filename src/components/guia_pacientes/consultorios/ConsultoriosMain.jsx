@@ -32,13 +32,13 @@ export const ConsultoriosMain = () => {
     {
       loop: true,
       align: "start",
-    }
-    // [
-    //   Autoplay({
-    //     delay: 3000, // 3 segundos
-    //     stopOnInteraction: false,
-    //   }),
-    // ]
+    },
+    [
+      Autoplay({
+        delay: 3000, // 3 segundos
+        stopOnInteraction: false,
+      }),
+    ]
   );
 
   const anterior = useCallback(() => {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export const TratamientosInicio = () => {
   const tratamientos = [
@@ -22,11 +23,14 @@ export const TratamientosInicio = () => {
   return (
     <section id="tratamientos">
       {/* Titulo */}
-      <h1 className="text-center text-4xl text-[#508EAD] font-bold mt-30 mb-10">TRATAMIENTOS</h1>
+      <h1 className="text-center text-4xl text-[#508EAD] font-bold mt-30 mb-10">
+        TRATAMIENTOS
+      </h1>
       <div className="mx-auto grid w-[90%] md:w-[60%] grid-cols-2 gap-5">
         {tratamientos.map((t, i) => (
-          <div
+          <Link
             key={i}
+            href={"/tratamientos"}
             className="flex p-3 md:p-10 flex-col items-center justify-center bg-[#323E4A] hover:scale-105 duration-300"
           >
             <Image
@@ -38,8 +42,10 @@ export const TratamientosInicio = () => {
               className="h-auto w-30 object-cover md:w-60"
             />
 
-            <p className="text-center font-bold text-white text-xl md:text-3xl">{t.nombre}</p>
-          </div>
+            <p className="text-center font-bold text-white text-xl md:text-3xl">
+              {t.nombre}
+            </p>
+          </Link>
         ))}
       </div>
     </section>
