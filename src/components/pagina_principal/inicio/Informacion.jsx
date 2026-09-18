@@ -5,8 +5,34 @@ import {
   faHospital,
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
+import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useState } from "react";
 
 export const Informacion = () => {
+  const [duracion, setDuracion] = useState(3000);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+    },
+    [
+      Autoplay({
+        delay: duracion * 1000,
+        stopOnInteraction: false,
+      }),
+    ]
+  );
+
+  const anterior = useCallback(() => {
+    emblaApi?.scrollPrev();
+  }, [emblaApi]);
+
+  const siguiente = useCallback(() => {
+    emblaApi?.scrollNext();
+  }, [emblaApi]);
+
   const telefono = "3815763300";
 
   const mensaje = encodeURIComponent(
@@ -30,6 +56,50 @@ export const Informacion = () => {
       anio: "CUA Annual Meeting · China",
     },
   ];
+
+  const videos = [
+    {
+      link: "/video1.mp4",
+    },
+    {
+      link: "/video2.mp4",
+    },
+  ];
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    let contador = 0;
+
+    const cambiarVideo = () => {
+      const index = emblaApi.selectedScrollSnap();
+      const slides = emblaApi.slideNodes();
+
+      // Pausar todos
+      slides.forEach((slide) => {
+        const video = slide.querySelector("video");
+        video?.pause();
+      });
+
+      // Reproducir el actual
+      const videoActual = slides[index]?.querySelector("video");
+
+      setDuracion(videoActual?.duration);
+      if (contador === 0) {
+        contador++;
+      } else {
+        videoActual?.play();
+      }
+    };
+
+    cambiarVideo();
+
+    emblaApi.on("select", cambiarVideo);
+
+    return () => {
+      emblaApi.off("select", cambiarVideo);
+    };
+  }, [emblaApi]);
   return (
     <>
       <section
@@ -41,17 +111,27 @@ export const Informacion = () => {
 
         {/* Contenido */}
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-6 py-20 text-white md:flex-row md:justify-center">
-          {/* Video */}
-          <video
-            className="w-48 rounded-xl md:w-64 lg:w-72"
-            autoPlay
-            loop
-            playsInline
-            controls
-            preload="metadata"
-          >
-            <source src="/video1.mp4" type="video/mp4" />
-          </video>
+          <div ref={emblaRef} className="overflow-hidden px-2 py-2">
+            <div className="flex">
+              {videos.map((v, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col justify-center items-center flex-[0_0_100%]"
+                >
+                  {/* Video */}
+                  <video
+                    className="w-48 rounded-xl md:w-64 lg:w-72"
+                    loop
+                    playsInline
+                    controls
+                    preload="metadata"
+                  >
+                    <source src={v.link} type="video/mp4" />
+                  </video>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* Texto */}
           <div className="max-w-3xl md:text-left flex flex-col items-center">
