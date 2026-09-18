@@ -4,6 +4,7 @@ import { Hero } from "./Hero";
 import { Informacion } from "./Informacion";
 import { ACercaDeMi } from "./ACercaDeMi";
 import { TratamientosInicio } from "./TratamientosInicio";
+import ObrasSociales from "./ObrasSociales";
 
 export const Inicio = () => {
   return (
@@ -12,6 +13,7 @@ export const Inicio = () => {
       <Informacion />
       <ACercaDeMi />
       <TratamientosInicio />
+      <ObrasSociales />
     </>
   );
 };
