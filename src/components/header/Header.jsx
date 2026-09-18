@@ -1,6 +1,7 @@
 "use client";
 
 import { useStore } from "@/store/useStore";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faBarcode, faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { animate } from "framer-motion";
@@ -8,46 +9,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
-const links = [
-  {
-    name: "TU SALUD UROLÓGICA",
-    href: "#informacion",
-    alturaPc: -80,
-    alturaMobile: 180,
-  },
-  { name: "CONOCEME", href: "#conoceme", alturaPc: -20, alturaMobile: 250 },
-  {
-    name: "TRATAMIENTOS",
-    href: "#tratamientos",
-    alturaPc: 0,
-    alturaMobile: 250,
-  },
-  { name: "GUÍA PARA PACIENTES", href: "/conoceme" },
-];
-
-const linksPacientes = [
-  {
-    name: "INICIO",
-    href: "/",
-  },
-  {
-    name: "CONOCEME",
-    href: "/conoceme",
-  },
-  {
-    name: "TRATAMIENTOS",
-    href: "/tratamientos",
-  },
-  {
-    name: "OBRAS SOCIALES",
-    href: "/obras_sociales",
-  },
-  {
-    name: "CONSULTORIOS",
-    href: "/consultorios",
-  },
-];
 
 export const Header = () => {
   const scrollbar = useStore((state) => state.scrollbar);
@@ -61,6 +22,71 @@ export const Header = () => {
   if (pathname != "/") {
     console.log("no es inicio");
   }
+
+  const telefono = "3815763300";
+
+  const mensaje = encodeURIComponent(
+    "Hola Dr. Fagetti, quisiera realizar una consulta y obtener información sobre un turno."
+  );
+
+  const links = [
+    {
+      name: "TU SALUD UROLÓGICA",
+      href: "#informacion",
+      alturaPc: -80,
+      alturaMobile: 180,
+    },
+    { name: "CONOCEME", href: "#conoceme", alturaPc: -20, alturaMobile: 250 },
+    {
+      name: "TRATAMIENTOS",
+      href: "#tratamientos",
+      alturaPc: 0,
+      alturaMobile: 250,
+    },
+    { name: "GUÍA PARA PACIENTES", href: "/conoceme" },
+    {
+      name: (
+        <p
+          target="_blank"
+          className="gap-1 inline-flex justify-center border-2 border-white px-3 py-4 text-xl uppercase transition-all duration-300 hover:scale-105 sm:text-lg md:text-xl"
+        >
+          SOLICITAR CONSULTA
+          <FontAwesomeIcon icon={faWhatsapp} className="text-3xl" />
+        </p>
+      ),
+      href: `https://wa.me/${telefono}?text=${mensaje}`,
+    },
+  ];
+
+  const linksPacientes = [
+    {
+      name: "INICIO",
+      href: "/",
+    },
+    {
+      name: "CONOCEME",
+      href: "/conoceme",
+    },
+    {
+      name: "TRATAMIENTOS",
+      href: "/tratamientos",
+    },
+    {
+      name: "OBRAS SOCIALES",
+      href: "/obras_sociales",
+    },
+    {
+      name: "CONSULTORIOS",
+      href: "/consultorios",
+    },
+    {
+      name: `SOLICITAR CONSULTA
+                ${(
+                  <FontAwesomeIcon icon={faWhatsapp} className="text-3xl" />
+                )}`,
+      href: `https://wa.me/${telefono}?text=${mensaje}`,
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -98,14 +124,14 @@ export const Header = () => {
       <header
         className={` top-0 z-50 w-full transition-colors duration-500 bg-[#66B4DB]  `}
       >
-        <div className="mx-auto flex max-w-7xl h-30 items-center justify-center px-6 py-4">
+        <div className="mx-auto flex  h-30 items-center justify-center px-6 py-4">
           {/* Desktop */}
           <nav className="font-sans hidden lg:flex items-center gap-6 xl:gap-10">
             {(pathname === "/" ? links : linksPacientes).map((link, i) => (
               <Link
                 key={i}
                 href={link.href}
-                className=" whitespace-nowrap text-sm  md:text-3xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
+                className=" whitespace-nowrap text-sm  lg:text-[18px] xl:text-[22px] 2xl:2xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
               >
                 {link.name}
               </Link>
