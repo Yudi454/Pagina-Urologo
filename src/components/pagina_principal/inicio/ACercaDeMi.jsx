@@ -22,13 +22,13 @@ export const ACercaDeMi = () => {
       </div>
       {/* Informacion */}
       <div className="flex flex-col items-center justify-start">
-        <h2 className="font-bold text-[#508EAD] text-4xl md:text-5xl">
+        <h2 className="font-serif font-bold text-[#508EAD] text-4xl md:text-5xl">
           A CERCA DE MI
         </h2>
-        <h3 className="text-[#508EAD] text-3xl mt-2 md:text-4xl md:mt-3">
+        <h3 className="font-serif text-[#508EAD] text-3xl mt-2 md:text-4xl md:mt-3">
           ESPECIALISTA EN UROLOGÍA
         </h3>
-        <p className="text-2xl md:text-3xl mt-5 md:mt-10 w-[90%] md:w-[80%]">
+        <p className="font-sans text-2xl md:text-3xl mt-5 md:mt-10 w-[90%] md:w-[80%]">
           El Dr. Franco Fagetti brinda atención urológica integral, enfocada en
           la prevención, el diagnóstico preciso y el tratamiento personalizado
           de cada paciente. Su compromiso es ofrecer una atención cercana y
@@ -36,7 +36,7 @@ export const ACercaDeMi = () => {
           urológica.
         </p>
         <br />
-        <p className="text-2xl md:text-3xl w-[90%] md:w-[80%]">
+        <p className="font-sans text-2xl md:text-3xl w-[90%] md:w-[80%]">
           Conocé su experiencia y los tratamientos especializados que ofrece.
         </p>
         <Link 

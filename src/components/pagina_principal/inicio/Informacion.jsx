@@ -7,30 +7,79 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const Informacion = () => {
-  const [duracion, setDuracion] = useState(3000);
+  const [duracion, setDuracion] = useState(3);
+
+  const [interactuo, setInteractuo] = useState(false);
+
+  useEffect(() => {
+    const activarInteraccion = () => {
+      setInteractuo(true);
+    };
+
+    const eventos = [
+      "click",
+      "pointerdown",
+      "pointerup",
+      "touchstart",
+      "touchend",
+      "keydown",
+    ];
+
+    eventos.forEach((evento) => {
+      window.addEventListener(evento, activarInteraccion, { once: true });
+    });
+
+    return () => {
+      eventos.forEach((evento) => {
+        window.removeEventListener(evento, activarInteraccion);
+      });
+    };
+  }, []);
+
+  const autoplay = useRef(
+    Autoplay({
+      delay: (snapList, emblaApi) => {
+        const slides = emblaApi.slideNodes();
+
+        const delays = snapList.map((_, index) => {
+          const video = slides[index]?.querySelector("video");
+
+          return video?.duration ? video.duration * 1000 : 3000;
+        });
+
+        console.log(
+          "DELAY FUNCTION:",
+          delays,
+          "readyStates:",
+          slides.map((slide) => slide.querySelector("video")?.readyState),
+          "durations:",
+          slides.map((slide) => slide.querySelector("video")?.duration)
+        );
+
+        return delays;
+      },
+      stopOnInteraction: false,
+      playOnInit: false,
+    })
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
       align: "start",
     },
-    [
-      Autoplay({
-        delay: duracion * 1000,
-        stopOnInteraction: false,
-      }),
-    ]
+    [autoplay.current]
   );
 
-  const anterior = useCallback(() => {
-    emblaApi?.scrollPrev();
-  }, [emblaApi]);
+  useEffect(() => {
+    if (!emblaApi) return;
 
-  const siguiente = useCallback(() => {
-    emblaApi?.scrollNext();
+    // emblaApi.scrollTo(0);
+    autoplay.current.stop();
+    setInteractuo(false);
   }, [emblaApi]);
 
   const telefono = "3815763300";
@@ -72,6 +121,15 @@ export const Informacion = () => {
     let contador = 0;
 
     const cambiarVideo = () => {
+      console.log(
+        "CAMBIAR VIDEO",
+        "interactuo:",
+        interactuo,
+        "tiempo:",
+        Date.now()
+      );
+
+      console.log("SELECT", emblaApi.selectedScrollSnap(), Date.now());
       const index = emblaApi.selectedScrollSnap();
       const slides = emblaApi.slideNodes();
 
@@ -84,10 +142,32 @@ export const Informacion = () => {
       // Reproducir el actual
       const videoActual = slides[index]?.querySelector("video");
 
-      setDuracion(videoActual?.duration);
-      if (contador === 0) {
-        contador++;
-      } else {
+      if (videoActual) {
+        if (
+          videoActual.readyState >= 1 &&
+          Number.isFinite(videoActual.duration)
+        ) {
+          const nuevaDuracion = videoActual.duration * 1000;
+
+          // autoplay.current.options.delay = nuevaDuracion;
+
+          console.log("readyState:", videoActual.readyState);
+          console.log("duration:", videoActual.duration);
+          console.log(emblaApi.plugins().autoplay);
+          console.log(
+            "TIME UNTIL NEXT DESPUÉS DE CAMBIAR:",
+            emblaApi.plugins().autoplay.timeUntilNext()
+          );
+
+          if (interactuo) {
+            autoplay.current.stop();
+            autoplay.current.play();
+          }
+
+          setDuracion(videoActual.duration);
+        }
+      }
+      if (interactuo) {
         videoActual?.play();
       }
     };
@@ -99,7 +179,63 @@ export const Informacion = () => {
     return () => {
       emblaApi.off("select", cambiarVideo);
     };
+  }, [emblaApi, interactuo]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    console.log("EMBLA API", emblaApi);
+    console.log("AUTOPLAY", autoplay.current);
+    console.log("PLUGIN AUTOPLAY", emblaApi.plugins().autoplay);
+    console.log(
+      "MISMA INSTANCIA:",
+      autoplay.current === emblaApi.plugins().autoplay
+    );
+
+    const onPlay = () => console.log("autoplay:play", Date.now());
+    const onSelect = () => console.log("select", Date.now());
+
+    emblaApi.on("autoplay:play", onPlay);
+    emblaApi.on("select", onSelect);
+
+    return () => {
+      emblaApi.off("autoplay:play", onPlay);
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const slides = emblaApi.slideNodes();
+
+    const videos = slides
+      .map((slide) => slide.querySelector("video"))
+      .filter(Boolean);
+
+    const verificarVideos = () => {
+      const todosListos = videos.every(
+        (video) => video.readyState >= 1 && Number.isFinite(video.duration)
+      );
+
+      if (todosListos) {
+        console.log("VIDEOS LISTOS → REINIT");
+        emblaApi.reInit();
+      }
+    };
+
+    videos.forEach((video) => {
+      video.addEventListener("loadedmetadata", verificarVideos);
+    });
+
+    verificarVideos();
+
+    return () => {
+      videos.forEach((video) => {
+        video.removeEventListener("loadedmetadata", verificarVideos);
+      });
+    };
+  }, [emblaApi]);
+
   return (
     <>
       <section

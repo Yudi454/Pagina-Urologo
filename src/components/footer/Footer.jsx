@@ -5,7 +5,6 @@ import {
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "@/styles/text/text.css";
 
 export const Footer = () => {
   const servicios = [

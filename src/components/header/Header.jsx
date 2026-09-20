@@ -72,18 +72,19 @@ export const Header = () => {
       href: "/tratamientos",
     },
     {
-      name: "OBRAS SOCIALES",
-      href: "/obras_sociales",
-    },
-    {
       name: "CONSULTORIOS",
       href: "/consultorios",
     },
     {
-      name: `SOLICITAR CONSULTA
-                ${(
-                  <FontAwesomeIcon icon={faWhatsapp} className="text-3xl" />
-                )}`,
+      name: (
+        <p
+          target="_blank"
+          className="gap-1 inline-flex justify-center border-2 border-white px-3 py-4 text-xl uppercase transition-all duration-300 hover:scale-105 sm:text-lg md:text-xl"
+        >
+          SOLICITAR CONSULTA
+          <FontAwesomeIcon icon={faWhatsapp} className="text-3xl" />
+        </p>
+      ),
       href: `https://wa.me/${telefono}?text=${mensaje}`,
     },
   ];
