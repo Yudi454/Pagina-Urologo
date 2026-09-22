@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { tratamientos } from "./tratamientos";
 
 export const TratamientosMain = () => {
@@ -16,9 +17,11 @@ export const TratamientosMain = () => {
               <div className="flex flex-col justify-center items-center text-center md:text-left md:grid md:grid-cols-[170px_1fr] gap-6">
                 {/* Imagen */}
                 <div className="flex h-42.5 items-center justify-center rounded-md hover:scale-105 duration-300 bg-[#314150] p-4">
-                  <img
+                  <Image
                     src={item.imagen}
                     alt={item.titulo}
+                    width={170}
+                    height={170}
                     className="max-h-30  max-w-full object-contain"
                   />
                 </div>

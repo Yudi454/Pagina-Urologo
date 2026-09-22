@@ -13,80 +13,87 @@ export const Header = () => {
 
   const pathname = usePathname();
 
-  if (pathname != "/") {
-    console.log("no es inicio");
-  }
-
   return (
-    <>
-      <header
-        className={` top-0 z-50 w-full transition-colors duration-500 bg-[#66B4DB]  `}
-      >
-        <div className="mx-auto flex  h-30 items-center justify-center px-6 py-4">
-          {/* Desktop */}
-          <nav className="font-sans hidden lg:flex items-center gap-6 xl:gap-10">
-            {(pathname === "/" ? links : linksPacientes).map((link, i) => (
-              <Link
-                key={i}
-                href={link.href}
-                className=" whitespace-nowrap text-sm  lg:text-[18px] xl:text-[22px] 2xl:2xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Botón móvil */}
-          <button onClick={() => setOpen(!open)} className="lg:hidden w-100">
-            {open ? (
-              <FontAwesomeIcon
-                icon={faX}
-                size="xl"
-                style={{ color: "rgb(12, 113, 195)" }}
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faBars}
-                size="2xl"
-                style={{ color: "rgb(12, 113, 195)" }}
-              />
-            )}
-          </button>
-        </div>
-
-        {/* Menú móvil */}
-        <div
-          className={`lg:hidden overflow-hidden transition-all duration-600 ease-in-out ${
-            open ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
-          }`}
+    <header
+      className={` top-0 z-50 w-full transition-colors duration-500 bg-[#66B4DB]  `}
+    >
+      <div className="mx-auto flex  h-30 items-center justify-center px-6 py-4">
+        {/* Desktop */}
+        <nav
+          className="font-sans hidden lg:flex items-center gap-6 xl:gap-10"
+          aria-label="Navegación principal"
         >
-          <nav className="flex flex-col bg-white border-t-2 border-[#0C71C3] shadow-lg">
-            {(pathname === "/" ? links : linksPacientes).map((link, i) => (
-              <Link
-                key={i}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="group relative flex items-center px-6 py-4 text-lg font-medium text-gray-800  transition-all duration-300 hover:bg-[#0C71C3]/5 hover:text-[#0C71C3] active:bg-[#0C71C3]/10 border-b border-[#0C71C3]/50 last:border-b-0"
-              >
-                {/* Barrita lateral */}
-                <span className="absolute left-0 top-0 h-full w-1 bg-[#0C71C3] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"></span>
+          {(pathname === "/" ? links : linksPacientes).map((link, i) => (
+            <Link
+              key={i}
+              href={link.href}
+              className=" whitespace-nowrap text-sm  lg:text-[18px] xl:text-[22px] 2xl:2xl text-white transition-colors hover:text-[#D6F1FF] font-bold"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
 
-                {/* Número */}
-                <span className="mr-4 text-sm font-bold text-[#0C71C3]/60 w-6">
-                  0{i + 1}
-                </span>
+        {/* Botón móvil */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="lg:hidden w-100"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+        >
+          {open ? (
+            <FontAwesomeIcon
+              icon={faX}
+              size="xl"
+              style={{ color: "rgb(12, 113, 195)" }}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faBars}
+              size="2xl"
+              style={{ color: "rgb(12, 113, 195)" }}
+            />
+          )}
+        </button>
+      </div>
 
-                {link.name}
+      {/* Menú móvil */}
+      <div
+        className={`lg:hidden overflow-hidden transition-all duration-600 ease-in-out ${
+          open ? "max-h-125 opacity-100" : "max-h-0 opacity-0"
+        }`}
+        id="mobile-menu"
+      >
+        <nav
+          className="flex flex-col bg-white border-t-2 border-[#0C71C3] shadow-lg"
+          aria-label="Navegación móvil"
+        >
+          {(pathname === "/" ? links : linksPacientes).map((link, i) => (
+            <Link
+              key={i}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="group relative flex items-center px-6 py-4 text-lg font-medium text-gray-800  transition-all duration-300 hover:bg-[#0C71C3]/5 hover:text-[#0C71C3] active:bg-[#0C71C3]/10 border-b border-[#0C71C3]/50 last:border-b-0"
+            >
+              {/* Barrita lateral */}
+              <span className="absolute left-0 top-0 h-full w-1 bg-[#0C71C3] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-300"></span>
 
-                {/* Flecha */}
-                <span className="ml-auto text-[#0C71C3] opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:translate-x-1">
-                  →
-                </span>
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </header>
-    </>
+              {/* Número */}
+              <span className="mr-4 text-sm font-bold text-[#0C71C3]/60 w-6">
+                0{i + 1}
+              </span>
+
+              {link.name}
+
+              {/* Flecha */}
+              <span className="ml-auto text-[#0C71C3] opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </header>
   );
 };

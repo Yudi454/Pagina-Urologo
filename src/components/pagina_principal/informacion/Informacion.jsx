@@ -166,10 +166,11 @@ export const Informacion = () => {
                   {/* Video */}
                   <video
                     className="w-48 rounded-xl md:w-64 lg:w-72"
-                    loop
-                    playsInline
                     controls
+                    playsInline
+                    loop
                     preload="metadata"
+                    aria-label={v.descripcion}
                   >
                     <source src={v.link} type="video/mp4" />
                   </video>
@@ -193,9 +194,11 @@ export const Informacion = () => {
             </p>
 
             <a
+              className="mt-14 inline-flex md:w-[50%] justify-center border-2 border-white px-10 py-4 text-xl font-medium uppercase transition-all duration-300 hover:scale-105 hover:border-[#536F7A]/25 hover:bg-[#536F7A]/25 md:px-12 md:py-5 md:text-2xl"
               href={`https://wa.me/${telefono}?text=${mensaje}`}
               target="_blank"
-              className="mt-14 inline-flex md:w-[50%] justify-center border-2 border-white px-10 py-4 text-xl font-medium uppercase transition-all duration-300 hover:scale-105 hover:border-[#536F7A]/25 hover:bg-[#536F7A]/25 md:px-12 md:py-5 md:text-2xl"
+              rel="noopener noreferrer"
+              aria-label="Solicitar una consulta por WhatsApp con el Dr. Franco Fagetti"
             >
               SOLICITAR CONSULTA
             </a>

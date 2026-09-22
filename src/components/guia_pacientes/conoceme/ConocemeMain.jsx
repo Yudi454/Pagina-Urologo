@@ -21,7 +21,7 @@ export const ConocemeMain = () => {
           <div className="flex flex-col gap-6">
             <div>
               <h2 className="text-4xl font-extrabold uppercase text-[#508EAD]">
-                A Acerca de Mi
+                ACERCA DE MÍ
               </h2>
 
               <h3 className="mt-5 text-3xl font-bold uppercase text-[#508EAD]">
@@ -42,22 +42,25 @@ export const ConocemeMain = () => {
         </div>
 
         <div className="shadow mt-24 rounded-md border-2 border-[#323E4A] bg-white px-8 py-10 md:px-12">
-          {testimonios.map((resena, index) => (
+          {testimonios.map((t, index) => (
             <div key={index}>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <h4 className="text-3xl font-extrabold text-[#508EAD] md:text-4xl">
-                  {resena.nombre}
-                </h4>
+                <span className="text-3xl font-extrabold text-[#508EAD] md:text-4xl">
+                  {t.nombre}
+                </span>
 
-                <div className="flex gap-1 text-3xl text-[#F4C623]">
+                <div
+                  className="flex gap-1 text-3xl text-[#F4C623]"
+                  aria-label="5 de 5 estrellas"
+                >
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <FontAwesomeIcon key={i} icon={faStar} />
+                    <FontAwesomeIcon key={i} icon={faStar} aria-hidden="true" />
                   ))}
                 </div>
               </div>
 
               <p className="mt-5 text-xl leading-relaxed text-[#1A1A1A] md:text-2xl">
-                {resena.texto}
+                {t.texto}
               </p>
 
               {index !== testimonios.length - 1 && (

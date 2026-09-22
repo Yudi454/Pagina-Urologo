@@ -1,4 +1,3 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
@@ -6,13 +5,15 @@ import { BotonVolver } from "@/components/boton_volver/BotonVolver";
 import { BotonWhatsapp } from "@/components/boton_whatsapp/BotonWhatsapp";
 import UseLenis from "@/hooks/UseLenis";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import { Lora, Nunito } from "next/font/google";
+
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
 });
 
@@ -56,11 +57,10 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased `}
+      className={`${nunito.variable} ${lora.variable} h-full antialiased`}
     >
-      <body className="relative min-h-full flex flex-col">
-
-        <UseLenis >
+      <body>
+        <UseLenis>
           <Header />
           {children}
           <Footer />

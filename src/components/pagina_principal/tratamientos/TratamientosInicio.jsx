@@ -7,9 +7,9 @@ export const TratamientosInicio = () => {
   return (
     <section id="tratamientos">
       {/* Titulo */}
-      <h1 className="text-center text-4xl text-[#508EAD] font-bold mt-30 mb-10">
+      <h2 className="text-center text-4xl text-[#508EAD] font-bold mt-30 mb-10">
         TRATAMIENTOS
-      </h1>
+      </h2>
       <div className="mx-auto grid w-[90%] md:w-[60%] grid-cols-2 gap-5">
         {tratamientos.map((t, i) => (
           <Link
@@ -22,7 +22,6 @@ export const TratamientosInicio = () => {
               alt={t.nombre}
               width={500}
               height={500}
-              priority
               className="h-auto w-30 object-cover md:w-60"
             />
 
