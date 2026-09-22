@@ -1,69 +1,7 @@
-import {
-  faFacebook,
-  faInstagram,
-  faLinkedin,
-  faWhatsapp,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { consultorios } from "./consultorios";
+import { contactos } from "./contactos";
 
 export const Footer = () => {
-  const servicios = [
-    { service: "Litiasis Urinaria", link: "#Litiasis" },
-    { service: "Control Prostático", link: "#Protático" },
-    { service: "Incontinencia Urinaria", link: "#Incontinencia" },
-    { service: "Cirugía Láser de Próstata (HoLEP)", link: "#Círugia Láser" },
-  ];
-
-  const consultorios = [
-    {
-      direccion:
-        "Dirección: Santiago del Estero 157, T4000 San Miguel de Tucumán, Tucumán",
-    },
-  ];
-
-  const contactos = [
-    {
-      icon: (
-        <FontAwesomeIcon
-          icon={faInstagram}
-          className="size-10! md:size-15!"
-          style={{ color: "rgb(255, 255, 255)" }}
-        />
-      ),
-      text: "dr.francofagetti",
-    },
-    {
-      icon: (
-        <FontAwesomeIcon
-          icon={faFacebook}
-          className="size-10! md:size-15!"
-          style={{ color: "rgb(255, 255, 255)" }}
-        />
-      ),
-      text: "Franco Fagetti",
-    },
-    {
-      icon: (
-        <FontAwesomeIcon
-          icon={faLinkedin}
-          className="size-10! md:size-15!"
-          style={{ color: "rgb(255, 255, 255)" }}
-        />
-      ),
-      text: "Franco Fagetti",
-    },
-    {
-      icon: (
-        <FontAwesomeIcon
-          icon={faWhatsapp}
-          className="size-10! md:size-15!"
-          style={{ color: "rgb(255, 255, 255)" }}
-        />
-      ),
-      text: "0381 576-3300",
-    },
-  ];
-
   return (
     <footer className=" bg-[#323E4A] rounded-md shadow-md px-10 py-8 mt-20">
       <div className="grid grid-cols-1 md:grid-cols-3 items-start">

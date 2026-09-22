@@ -1,104 +1,29 @@
-"use client";
+import React from "react";
 
-import { useEffect } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import { motion } from "framer-motion";
+const ObrasSociales = () => {
+  const telefono = "3815763300";
 
-export const ObrasSociales = () => {
-  const obrasSociales = [
-    {
-      nombre: "Ricardo C. Mora",
-      imagen: "/mora.png",
-    },
-    {
-      nombre: "Vitalia",
-      imagen: "/vitalia.jpg",
-    },
-    {
-      nombre: "Sanatorio Integral",
-      imagen: "/sanatorio_integral.jpeg",
-    },
-  ];
-
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
-    align: "start",
-  });
-
-  // Rotación automática
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const intervalo = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 3000);
-
-    return () => clearInterval(intervalo);
-  }, [emblaApi]);
+  const mensaje = encodeURIComponent("Que obra sociales maneja?");
 
   return (
-    <section className="w-full py-5 px-4 scroll-mt-100 md:scroll-mt-30" id="obras" >
-      <div className="mx-auto max-w-7xl">
-        {/* Título */}
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#087bd1]">
-            Obras sociales
-          </h2>
-
-          <p className="mt-3 text-[#087bd1]">
-            Trabajamos con diferentes obras sociales y entidades de salud.
-          </p>
-        </div>
-
-        {/* Carousel */}
-        <div ref={emblaRef} className="overflow-hidden">
-          <div className="flex -mx-3">
-            {obrasSociales.map((obra, index) => (
-              <div
-                key={index}
-                className="min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-3"
-              >
-                <motion.div
-                  initial={{ opacity: 0.7, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeOut",
-                  }}
-                  viewport={{ once: true }}
-                  className="overflow-hidden rounded-lg border-2 border-blue-600 bg-white shadow-sm"
-                >
-                  {/* Imagen */}
-                  <div className="h-52 w-full overflow-hidden bg-white">
-                    <img
-                      src={obra.imagen}
-                      alt={obra.nombre}
-                      className="h-full w-full object-contain transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Contenido */}
-                  <div className="p-5">
-                    <h3 className="text-xl font-bold text-[#087bd1]">
-                      {obra.nombre}
-                    </h3>
-
-                    {obra.subtitulo && (
-                      <p className="mt-1 text-sm font-medium text-[#087bd1]">
-                        {obra.subtitulo}
-                      </p>
-                    )}
-
-                    <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                      {obra.descripcion}
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-            ))}
-          </div>
-        </div>
+    <section className="mt-30 mb-10 flex flex-col justify-center items-center">
+      <h2 className="font-bold text-[#508EAD] text-4xl md:text-5xl uppercase">
+        Obras Sociales
+      </h2>
+      <p className="text-[#508EAD] text-3xl mt-2 md:text-4xl md:mt-3">
+        Consultá la cobertura de tu obra social haciendo clic en el botón de
+        abajo.
+      </p>
+      <div>
+        <a
+          className=" mt-14 inline-flex items-center justify-center border-2 text-[#508EAD] border-[#508EAD] p-5 px-10 py-4 text-xl font-medium  transition-all duration-300 hover:scale-105 md:px-12 md:py-5 md:text-2xl uppercase"
+          href={`https://wa.me/${telefono}?text=${mensaje}`}
+        >
+          Consultar sobre obras sociales
+        </a>
       </div>
     </section>
   );
 };
+
+export default ObrasSociales;

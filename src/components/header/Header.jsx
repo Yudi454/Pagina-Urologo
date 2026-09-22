@@ -1,21 +1,15 @@
 "use client";
 
-import { useStore } from "@/store/useStore";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { faBarcode, faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { animate } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { links } from "./links";
+import { linksPacientes } from "./linksPacientes";
 
 export const Header = () => {
-  const scrollbar = useStore((state) => state.scrollbar);
-
   const [open, setOpen] = useState(false);
-
-  const [scrolled, setScrolled] = useState(false);
 
   const pathname = usePathname();
 
@@ -23,103 +17,6 @@ export const Header = () => {
     console.log("no es inicio");
   }
 
-  const telefono = "3815763300";
-
-  const mensaje = encodeURIComponent(
-    "Hola Dr. Fagetti, quisiera realizar una consulta y obtener información sobre un turno."
-  );
-
-  const links = [
-    {
-      name: "TU SALUD UROLÓGICA",
-      href: "#informacion",
-      alturaPc: -80,
-      alturaMobile: 180,
-    },
-    { name: "CONOCEME", href: "#conoceme", alturaPc: -20, alturaMobile: 250 },
-    {
-      name: "TRATAMIENTOS",
-      href: "#tratamientos",
-      alturaPc: 0,
-      alturaMobile: 250,
-    },
-    { name: "GUÍA PARA PACIENTES", href: "/conoceme" },
-    {
-      name: (
-        <p
-          target="_blank"
-          className="gap-1 inline-flex justify-center border-2 border-white px-3 py-4 text-xl uppercase transition-all duration-300 hover:scale-105 sm:text-lg md:text-xl"
-        >
-          SOLICITAR CONSULTA
-          <FontAwesomeIcon icon={faWhatsapp} className="text-3xl" />
-        </p>
-      ),
-      href: `https://wa.me/${telefono}?text=${mensaje}`,
-    },
-  ];
-
-  const linksPacientes = [
-    {
-      name: "INICIO",
-      href: "/",
-    },
-    {
-      name: "CONOCEME",
-      href: "/conoceme",
-    },
-    {
-      name: "TRATAMIENTOS",
-      href: "/tratamientos",
-    },
-    {
-      name: "CONSULTORIOS",
-      href: "/consultorios",
-    },
-    {
-      name: (
-        <p
-          target="_blank"
-          className="gap-1 inline-flex justify-center border-2 border-white px-3 py-4 text-xl uppercase transition-all duration-300 hover:scale-105 sm:text-lg md:text-xl"
-        >
-          SOLICITAR CONSULTA
-          <FontAwesomeIcon icon={faWhatsapp} className="text-3xl" />
-        </p>
-      ),
-      href: `https://wa.me/${telefono}?text=${mensaje}`,
-    },
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      // window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const handleScroll = (e, href, alturaPc, alturaMobile) => {
-    e.preventDefault();
-
-    const element = document.querySelector(href);
-    if (!element) return;
-
-    const isMobile = window.innerWidth < 1024;
-    const offset = isMobile ? alturaMobile : alturaPc;
-
-    const target =
-      element.getBoundingClientRect().top + window.scrollY - offset;
-
-    window.scrollTo({
-      top: target,
-      behavior: "smooth",
-    });
-
-    setOpen(false);
-  };
   return (
     <>
       <header

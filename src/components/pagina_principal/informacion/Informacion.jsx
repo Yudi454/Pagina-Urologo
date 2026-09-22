@@ -1,17 +1,11 @@
 "use client";
 
-import {
-  faGraduationCap,
-  faHospital,
-  faUserGroup,
-} from "@fortawesome/free-solid-svg-icons";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { videos } from "./videos";
 
 export const Informacion = () => {
-  const [duracion, setDuracion] = useState(3);
-
   const [interactuo, setInteractuo] = useState(false);
 
   useEffect(() => {
@@ -50,15 +44,6 @@ export const Informacion = () => {
           return video?.duration ? video.duration * 1000 : 3000;
         });
 
-        console.log(
-          "DELAY FUNCTION:",
-          delays,
-          "readyStates:",
-          slides.map((slide) => slide.querySelector("video")?.readyState),
-          "durations:",
-          slides.map((slide) => slide.querySelector("video")?.duration)
-        );
-
         return delays;
       },
       stopOnInteraction: false,
@@ -77,7 +62,6 @@ export const Informacion = () => {
   useEffect(() => {
     if (!emblaApi) return;
 
-    // emblaApi.scrollTo(0);
     autoplay.current.stop();
     setInteractuo(false);
   }, [emblaApi]);
@@ -88,48 +72,10 @@ export const Informacion = () => {
     "Hola Dr. Fagetti, quisiera realizar una consulta y obtener información sobre un turno."
   );
 
-  const perfiles = [
-    {
-      icon: faGraduationCap,
-      nombre: "Medico",
-      anio: "20x",
-    },
-    {
-      icon: faHospital,
-      nombre: "Residencia",
-      anio: "Hosptial X",
-    },
-    {
-      icon: faUserGroup,
-      nombre: "Congreso Internacional",
-      anio: "CUA Annual Meeting · China",
-    },
-  ];
-
-  const videos = [
-    {
-      link: "/video1.mp4",
-    },
-    {
-      link: "/video2.mp4",
-    },
-  ];
-
   useEffect(() => {
     if (!emblaApi) return;
 
-    let contador = 0;
-
     const cambiarVideo = () => {
-      console.log(
-        "CAMBIAR VIDEO",
-        "interactuo:",
-        interactuo,
-        "tiempo:",
-        Date.now()
-      );
-
-      console.log("SELECT", emblaApi.selectedScrollSnap(), Date.now());
       const index = emblaApi.selectedScrollSnap();
       const slides = emblaApi.slideNodes();
 
@@ -147,24 +93,10 @@ export const Informacion = () => {
           videoActual.readyState >= 1 &&
           Number.isFinite(videoActual.duration)
         ) {
-          const nuevaDuracion = videoActual.duration * 1000;
-
-          // autoplay.current.options.delay = nuevaDuracion;
-
-          console.log("readyState:", videoActual.readyState);
-          console.log("duration:", videoActual.duration);
-          console.log(emblaApi.plugins().autoplay);
-          console.log(
-            "TIME UNTIL NEXT DESPUÉS DE CAMBIAR:",
-            emblaApi.plugins().autoplay.timeUntilNext()
-          );
-
           if (interactuo) {
             autoplay.current.stop();
             autoplay.current.play();
           }
-
-          setDuracion(videoActual.duration);
         }
       }
       if (interactuo) {
@@ -183,28 +115,6 @@ export const Informacion = () => {
 
   useEffect(() => {
     if (!emblaApi) return;
-    console.log("EMBLA API", emblaApi);
-    console.log("AUTOPLAY", autoplay.current);
-    console.log("PLUGIN AUTOPLAY", emblaApi.plugins().autoplay);
-    console.log(
-      "MISMA INSTANCIA:",
-      autoplay.current === emblaApi.plugins().autoplay
-    );
-
-    const onPlay = () => console.log("autoplay:play", Date.now());
-    const onSelect = () => console.log("select", Date.now());
-
-    emblaApi.on("autoplay:play", onPlay);
-    emblaApi.on("select", onSelect);
-
-    return () => {
-      emblaApi.off("autoplay:play", onPlay);
-      emblaApi.off("select", onSelect);
-    };
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
 
     const slides = emblaApi.slideNodes();
 
@@ -218,7 +128,6 @@ export const Informacion = () => {
       );
 
       if (todosListos) {
-        console.log("VIDEOS LISTOS → REINIT");
         emblaApi.reInit();
       }
     };

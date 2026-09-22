@@ -12,7 +12,7 @@ const UseLenis = ({ children }) => {
         smoothWheel: true,
         wheelMultiplier: 1,
         virtualScroll: (e) => {
-          e.deltaY *= window.innerWidth < 1024 ? 1 : 0.5;
+          e.deltaY *= window.innerWidth < 1024 ? 1 : 0.4;
         },
         anchors: true,
         respectReducedMotion: false,

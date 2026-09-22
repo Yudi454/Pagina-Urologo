@@ -1,25 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { tratamientos } from "./tratamientos";
 
 export const TratamientosInicio = () => {
-  const tratamientos = [
-    {
-      foto: "/prostata.png",
-      nombre: "PRÓSTATA",
-    },
-    {
-      foto: "/calculos_renales.png",
-      nombre: "CÁLCULOS RENALES",
-    },
-    {
-      foto: "/disfuncion.png",
-      nombre: "DISFUNCIÓN ERÉCTIL",
-    },
-    {
-      foto: "/infeccion.png",
-      nombre: "INFECCIONES URINARIAS",
-    },
-  ];
+
   return (
     <section id="tratamientos">
       {/* Titulo */}

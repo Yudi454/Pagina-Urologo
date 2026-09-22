@@ -1,25 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import Link from "next/link";
-
-const resenas = [
-  {
-    nombre: "Carlos M",
-    texto:
-      "Excelente atención y muy profesional. Me explicó cada paso del tratamiento con claridad y me hizo sentir seguro durante todo el proceso.",
-  },
-  {
-    nombre: "María G",
-    texto:
-      "Recibí una atención muy cálida y profesional. El diagnóstico fue claro y el tratamiento dio excelentes resultados.",
-  },
-  {
-    nombre: "Jorge R",
-    texto:
-      "Destaco la dedicación, el trato humano y la confianza que transmite en cada consulta. Totalmente recomendable.",
-  },
-];
+import { testimonios } from "./testimonios";
 
 export const ConocemeMain = () => {
   return (
@@ -60,7 +42,7 @@ export const ConocemeMain = () => {
         </div>
 
         <div className="shadow mt-24 rounded-md border-2 border-[#323E4A] bg-white px-8 py-10 md:px-12">
-          {resenas.map((resena, index) => (
+          {testimonios.map((resena, index) => (
             <div key={index}>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <h4 className="text-3xl font-extrabold text-[#508EAD] md:text-4xl">
@@ -78,7 +60,7 @@ export const ConocemeMain = () => {
                 {resena.texto}
               </p>
 
-              {index !== resenas.length - 1 && (
+              {index !== testimonios.length - 1 && (
                 <div className="my-6 h-0.75 w-full rounded-full bg-[#323E4A]" />
               )}
             </div>
