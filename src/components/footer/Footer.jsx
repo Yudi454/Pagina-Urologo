@@ -7,13 +7,14 @@ export const Footer = () => {
     <footer className=" bg-[#323E4A] rounded-md shadow-md px-10 py-8 mt-20">
       <div className="grid grid-cols-1 md:grid-cols-3 items-start">
         {/* Logo */}
-        <div className="flex items-center justify-center md:pt-14 mb-4 md:mb-0">
+        <div className="flex items-center justify-center md:pt-14 mb-10 md:mb-0">
           <Image
-            src="/logo_claro.png"
+            src="/Logo.png"
             alt="Dr Franco Fagetti"
             className="w-[70%]"
             width={300}
             height={120}
+            unoptimized
           />
         </div>
 
