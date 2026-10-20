@@ -4,15 +4,15 @@ export const ObrasSociales = () => {
   const mensaje = encodeURIComponent("¿Qué obras sociales maneja?");
 
   return (
-    <section className="mt-30 mb-10 flex flex-col justify-center items-center">
+    <section className="mt-30 mb-10 flex flex-col justify-center items-center text-center">
       <h2 className="font-bold text-[#508EAD] text-4xl md:text-5xl uppercase">
         Obras Sociales
       </h2>
-      <p className="text-[#508EAD] text-3xl mt-2 md:text-4xl md:mt-3">
+      <p className="text-[#508EAD] p-3 md:p-0 text-3xl mt-2 md:text-4xl md:mt-3">
         Consultá la cobertura de tu obra social haciendo clic en el botón de
         abajo.
       </p>
-      <div>
+      <div className="p-5 md:p-0">
         <a
           className=" mt-14 inline-flex items-center justify-center border-2 text-[#508EAD] border-[#508EAD] p-5 px-10 py-4 text-xl font-medium  transition-all duration-300 hover:scale-105 md:px-12 md:py-5 md:text-2xl uppercase"
           href={`https://wa.me/${telefono}?text=${mensaje}`}
