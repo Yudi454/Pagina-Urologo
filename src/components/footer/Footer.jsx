@@ -9,7 +9,7 @@ export const Footer = () => {
         {/* Logo */}
         <div className="flex items-center justify-center md:pt-14 mb-10 md:mb-0">
           <Image
-            src="https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792526229/Logo.png"
+            src="https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792603958/Logo.webp"
             alt="Dr Franco Fagetti"
             className="w-[70%]"
             width={300}

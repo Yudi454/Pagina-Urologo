@@ -12,7 +12,7 @@ export const ACercaDeMi = () => {
       <div className="flex items-start justify-end md:me-10 ">
         <div>
           <Image
-            src="https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792526190/foto_personal_rombo.png"
+            src="https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792604021/foto_personal_rombo.webp"
             alt="Dr. Franco Fagetti, especialista en urología"
             width={500}
             height={500}
