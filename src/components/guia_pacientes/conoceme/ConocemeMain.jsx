@@ -5,12 +5,13 @@ import { testimonios } from "./testimonios";
 
 export const ConocemeMain = () => {
   return (
-    <section className=" py-16 lg:py-20">
+    <section className="py-16 lg:py-20">
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid items-start gap-10 lg:grid-cols-[300px_1fr]">
           <div className="mx-auto">
             <Image
-              src="/Foto_Personal.jpeg"
+              src="https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792526235/Foto_Personal.jpg"
+              loading="eager"
               alt="Dr. Franco Fagetti"
               width={300}
               height={300}
@@ -18,7 +19,7 @@ export const ConocemeMain = () => {
             />
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 text-center md:text-start">
             <div>
               <h2 className="text-4xl font-extrabold uppercase text-[#508EAD]">
                 ACERCA DE MÍ

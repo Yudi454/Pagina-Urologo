@@ -149,7 +149,7 @@ export const Informacion = () => {
     <>
       <section
         id="informacion"
-        className="relative flex min-h-150 md:min-h-250 w-full items-center justify-center overflow-hidden bg-[url('/fondo2.jpg')] bg-cover bg-center"
+        className="relative flex min-h-150 md:min-h-250 w-full items-center justify-center overflow-hidden bg-[url('https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792526196/fondo2.jpg')] bg-cover bg-center"
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-[#536F7A]/50" />

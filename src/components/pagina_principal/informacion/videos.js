@@ -1,10 +1,10 @@
 export const videos = [
   {
-    link: "/video1.mp4",
+    link: "https://res.cloudinary.com/dsc3e6rd4/video/upload/v1792526469/video1.mp4",
     descripcion: "Metodo de anticoncepción definitiva",
   },
   {
-    link: "/video2.mp4",
+    link: "https://res.cloudinary.com/dsc3e6rd4/video/upload/v1792526606/video2.mp4",
     descripcion: "La Uretrositoscopía flexible",
   },
 ];

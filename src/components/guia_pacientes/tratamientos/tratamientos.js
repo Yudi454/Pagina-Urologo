@@ -1,7 +1,7 @@
 export const tratamientos = [
   {
     titulo: "PRÓSTATA",
-    imagen: "/prostata.png",
+    imagen: "https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792526160/prostata.png",
     descripcion:
       "La próstata es una glándula que forma parte del sistema reproductor masculino y, con el paso de los años, puede presentar cambios que afecten la forma de orinar. Muchas de estas afecciones son frecuentes y pueden tratarse de manera efectiva.",
     tratamiento:
@@ -9,7 +9,7 @@ export const tratamientos = [
   },
   {
     titulo: "CÁLCULOS RENALES",
-    imagen: "/calculos_renales.png",
+    imagen: "https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792526222/calculos_renales.png",
     descripcion:
       "Los cálculos renales son pequeñas piedras que se forman en los riñones y, en algunos casos, pueden causar molestias al desplazarse por las vías urinarias. Con un diagnóstico oportuno existen diversas opciones para resolverlos.",
     tratamiento:
@@ -17,7 +17,7 @@ export const tratamientos = [
   },
   {
     titulo: "DISFUNCIÓN ERÉCTIL",
-    imagen: "/disfuncion.png",
+    imagen: "https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792526217/disfuncion.png",
     descripcion:
       "La disfunción eréctil es la dificultad persistente para lograr o mantener una erección suficiente para la actividad sexual. Es una consulta frecuente y suele tener solución cuando se identifica su causa.",
     tratamiento:
@@ -25,7 +25,7 @@ export const tratamientos = [
   },
   {
     titulo: "INFECCIONES URINARIAS",
-    imagen: "/infeccion.png",
+    imagen: "https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792526187/infeccion.png",
     descripcion:
       "Las infecciones urinarias afectan las vías urinarias y pueden provocar ardor al orinar, aumento de la frecuencia urinaria o molestias. Un diagnóstico adecuado permite indicar el tratamiento más conveniente.",
     tratamiento:
