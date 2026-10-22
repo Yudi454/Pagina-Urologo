@@ -18,7 +18,7 @@ const lora = Lora({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://drfrancofagetti.netlify.app/"),
+  metadataBase: new URL("https://drfrancofagetti.com.ar/"),
 
   title: "Dr. Franco Fagetti | Urólogo en Tucumán",
 
@@ -44,7 +44,7 @@ export const metadata = {
       "Consultas, diagnóstico y tratamiento urológico en San Miguel de Tucumán. Solicite su turno.",
     images: [
       {
-        url: "/Foto_Personal.jpeg",
+        url: "https://res.cloudinary.com/dsc3e6rd4/image/upload/v1792599016/Foto_Personal.webp",
         width: 1200,
         height: 630,
         alt: "Dr. Franco Fagetti - Urólogo en Tucumán",
